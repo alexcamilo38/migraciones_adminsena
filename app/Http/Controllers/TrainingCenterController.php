@@ -9,15 +9,15 @@ class TrainingCenterController extends Controller
 {
     //
 
-    public function operador(){
-        return view('trainingcenter.registro');
+    public function registro(){
+        return view('trainingcenters.registrar');
     }
-    public function recurso(Request $request){
-        $constructor = new Training_center();
-        $constructor->name = $request->name;
-        $constructor->location = $request->location;
-        $constructor->save();
-        return $constructor;
+    public function dato(Request $request){
+        $trainig = new Training_center();
+        $trainig->name = $request->name;
+        $trainig->location = $request->location;
+        $trainig->save();
+        return $trainig;
     }
 
 

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AreaController;
+use App\Http\Controllers\ComputerController;
 use App\Http\Controllers\TrainingCenterController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,5 +22,8 @@ Route::get('',function(){
 Route::get('areas/create',[AreaController::class,'create'])->name('areas.create');
 Route::post('areas/store',[AreaController::class,'salida'])->name('areas.store');
 
-Route::get('trainingcenter/registro',[TrainingCenterController::class,'operador'])->name('trainingcenter.registro');
-Route::post('trainingcenter/salidas',[TrainingCenterController::class,'recurso'])->name('trainingcenter.salidas');
+Route::get('trainingcenter/registrar',[TrainingCenterController::class,'registro'])->name('trainingcenters.registrar');
+Route::post('trainingcenter/dato',[TrainingCenterController::class,'dato'])->name('trainingcenters.datos');
+
+Route::get('computer/computador',[ComputerController::class,'marca'])->name('computer.computador');
+Route::post('computer/model',[ComputerController::class,'model'])->name('computer.model');
