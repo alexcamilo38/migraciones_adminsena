@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
 
 
-            $table->unsignedBigInteger('course_id')->nullable()->unique();
+            $table->unsignedBigInteger('course_id')->nullable();
 
            $table->foreign('course_id')
            ->references('id')
@@ -23,7 +23,7 @@ return new class extends Migration
            ->onDelete('set null')
            ->onUpdate('set null');
 
-           $table->unsignedBigInteger('teacher_id')->nullable()->unique();
+           $table->unsignedBigInteger('teacher_id')->nullable();
 
            $table->foreign('teacher_id')
            ->references('id')
