@@ -15,11 +15,10 @@ class ApprenticeController extends Controller
 
     public function registro(){
 
-    $courses = Course::all(); 
-    $computers = Computer::all();
-
-    return view('apprentice.registro', compact('courses', 'computers'));
-}
+     $courses=Course::all();
+     $computers=Computer::all();
+        return view('apprentice.registro',compact('courses','computers'));
+    }
     
     public function dato(Request $request){
         Apprentice::create($request->all());
