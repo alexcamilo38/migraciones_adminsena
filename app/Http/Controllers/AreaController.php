@@ -13,13 +13,7 @@ class AreaController extends Controller
     }
     public function salida(Request $request){
 
-      $areas = new Area();
-
-      $areas->name=$request->name;
-
-      $areas->save();
-
-      return $areas;
+        Area::create($request->all());
 
     }
 }

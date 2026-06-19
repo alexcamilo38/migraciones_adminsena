@@ -11,4 +11,11 @@ class Computer extends Model
     public function apprentice(){
         return $this->hasOne('App\Models\apprentice');
     }
+
+    protected $fillable = [  
+        'number',
+        'brand',
+    ];
+
+    
 }

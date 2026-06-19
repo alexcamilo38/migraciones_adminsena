@@ -18,4 +18,8 @@ class Area extends Model
     public function courses(){
         return $this->hasMany('App\Models\couse');
     }
+    protected $fillable = [
+        'name',
+       
+    ];
 }

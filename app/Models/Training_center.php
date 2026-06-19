@@ -16,4 +16,11 @@ class Training_center extends Model
     public function courses(){
         return $this->hasMany('App\Models\course');
     }
+
+
+    protected $fillable = [
+        'name',
+        'location',
+       
+    ];
 }

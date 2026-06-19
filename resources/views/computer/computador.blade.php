@@ -11,13 +11,13 @@
         <label>
             Numero:
             <br>
-            <input type="number" name="numero">
+            <input type="number" name="number">
         </label>
         <br>
         <label>
             Marca:
             <br>
-            <input type="text" name="marca">
+            <input type="text" name="brand">
         </label>
         <br><br>
         <button type="submit">Enviar Formulario:</button>

@@ -11,11 +11,8 @@ class ComputerController extends Controller
     public function marca(){
         return view('computer.computador');
     }
-    public function model(Request $comillas){
-        $manejo = new Computer();
-        $manejo->numero = $comillas->numero;
-        $manejo->marca = $comillas->marca;
-        return $manejo;
+    public function model(Request $request){
+         Computer::create($request->all());
     }
 
 }
