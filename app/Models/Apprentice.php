@@ -16,4 +16,12 @@ class Apprentice extends Model
         return $this->hasOne('App\Models\computer');
     }
     
+    protected $fillable = [
+        'name',
+        'email',
+        'cell_number',
+        'course_id',
+        'computer_id',
+       
+    ];
 }

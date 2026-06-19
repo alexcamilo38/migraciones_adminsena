@@ -14,8 +14,8 @@ class TeacherController extends Controller
     public function registro(){
 
      $areas=Area::all();
-     $training_center=Training_center::all();
-        return view('teacher.registro',compact('areas'));
+     $training_centers=Training_center::all();
+        return view('teacher.registro',compact('areas','training_centers'));
      
 
     }
