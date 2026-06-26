@@ -1,12 +1,8 @@
-<html lang="en">
+    
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+@section('content')
 
-<body>
     <form action="{{ route('teacher.admin') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <label>
@@ -44,6 +40,4 @@
         <br><br>
         <button type="submit">Enviar Formulario:</button>
     </form>
-</body>
-
-</html>
+    @endsection
