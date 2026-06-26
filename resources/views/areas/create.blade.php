@@ -5,12 +5,12 @@
 
         @csrf
 
-        <label>
+        <label class="form-label fw-bold">
             Nombre:
             <br>
             <input type="text" name="name">
         </label>
         <br><br>
-        <button type="submit">Enviar Formulario:</button>
+        <button type="submit" >Enviar Formulario</button>
     </form>
    @endsection

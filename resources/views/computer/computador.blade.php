@@ -15,6 +15,6 @@
                 <input type="text" name="brand">
             </label>
             <br><br>
-            <button type="submit">Enviar Formulario:</button>
+            <button type="submit">Enviar Formulario</button>
         </form>
-@endsection
+    @endsection

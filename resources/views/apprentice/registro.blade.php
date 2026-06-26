@@ -1,4 +1,4 @@
-    @extends('layouts.app')
+@extends('layouts.app')
 
     @section('content')
         <form action="{{ route('apprentice.admin') }}" method="POST" enctype="multipart/form-data">
@@ -32,7 +32,7 @@
                     </option>
                 @endforeach
             </select>
-
+            <br>
             <select name="computer_id">
 
                 <option value="">Seleccione un computador</option>
@@ -45,4 +45,4 @@
             <br><br>
             <button type="submit">Enviar Formulario</button>
         </form>
-@endsection
+@endsection 

@@ -16,7 +16,7 @@
         </label>
         <br>
         <label for="area_id">Usuario</label>
-
+        <br>
         <select name="area_id" id="area_id" class="form-control">
             <option value="">Seleccione una area</option>
 
@@ -26,7 +26,7 @@
                 </option>
             @endforeach
         </select>
-
+            <br>
         <select name="training_center_id">
 
              <option value="">Seleccione un centro de formación</option>
