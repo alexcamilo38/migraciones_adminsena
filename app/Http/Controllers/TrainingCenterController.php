@@ -9,6 +9,14 @@ class TrainingCenterController extends Controller
 {
     //
 
+    public function index(){
+
+        $Training_centers=Training_center::all();
+
+        return view('trainingcenters.index',compact('Training_centers'));
+
+
+    }
     public function registro(){
         return view('trainingcenters.registrar');
     }

@@ -23,13 +23,18 @@ Route::get('',function(){
 });
 
 Route::get('areas/create',[AreaController::class,'create'])->name('areas.create');
+Route::get('areas/list',[AreaController::class,'index'])->name('areas.index');
 Route::post('areas/store',[AreaController::class,'salida'])->name('areas.store');
+Route::get('areas/{id}',[AreaController::class,'show'])->name('areas.show');
 
 Route::get('trainingcenter/registrar',[TrainingCenterController::class,'registro'])->name('trainingcenters.registrar');
+Route::get('trainingcenter/list',[ComputerController::class,'index'])->name('trainingcenters.index');
 Route::post('trainingcenter/dato',[TrainingCenterController::class,'dato'])->name('trainingcenters.datos');
 
 Route::get('computer/computador',[ComputerController::class,'marca'])->name('computer.computador');
+Route::get('computer/list',[ComputerController::class,'index'])->name('computer.index');
 Route::post('computer/model',[ComputerController::class,'model'])->name('computer.model');
+Route::get('computer/{id}',[ComputerController::class,'show'])->name('computer.show');
 
 Route::get('teacher/registro',[TeacherController::class,'registro'])->name('teacher.registro');
 Route::post('teacher/admin',[TeacherController::class,'dato'])->name('teacher.admin');
