@@ -10,6 +10,16 @@ use Illuminate\Http\Request;
 class CourseController extends Controller
 {
     //
+
+    public function index(){
+
+        $courses=Course::all();
+
+        return view('course.index',compact('courses'));
+
+
+    }
+
     public function registro(){
 
      $areas=Area::all();
@@ -21,5 +31,13 @@ class CourseController extends Controller
     
     public function dato(Request $request){
         Course::create($request->all());
+    }
+
+    public function show ($id){
+
+     $courses=Course::find($id);
+       return view('course.show',compact('courses'));
+
+
     }
 }

@@ -24,7 +24,13 @@ class TrainingCenterController extends Controller
     public function dato(Request $request){
         Training_center::create($request->all());
     }
+    public function show ($id){
 
+     $Training_centers=Training_center::find($id);
+       return view('trainingcenters.show',compact('Training_centers'));
+
+
+    }
 
 
 

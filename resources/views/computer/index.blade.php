@@ -15,7 +15,7 @@
             </thead>
             <tbody>
                  <a href="{{ route('computer.computador') }}" class="btn btn-success">
-                    <i class="bi bi-plus-circle"></i> Nuevo Producto
+                    <i class="bi bi-plus-circle"></i> Nuevo computador
                 </a>
                 <br><br>
                 @foreach ($computer as $computer)

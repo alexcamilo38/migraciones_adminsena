@@ -7,7 +7,7 @@
 
         <div class="card-header bg-primary text-white">
             <h3 class="mb-0">
-                {{ $computer['brand'] }}
+                Profesor: {{ $teachers['name'] }}
             </h3>
         </div>
 
@@ -18,14 +18,25 @@
                 <div class="col-md-6 mb-3">
                     <label class="fw-bold">ID</label>
                     <div class="form-control bg-light">
-                        {{ $computer['id'] }}
+                        {{ $teachers['id'] }}
                     </div>
                 </div>
 
                 <div class="col-md-6 mb-3">
-                    <label class="fw-bold">Número</label>
+                    <label class="fw-bold">Nombre Completo</label>
                     <div class="form-control">
-                        {{ $computer['number'] }}
+                        {{ $teachers['name'] }}
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-12 mb-3">
+                    <label class="fw-bold">Correo Electrónico </label>
+                    <div class="form-control">
+                        {{ $teachers['email'] }}
                     </div>
                 </div>
 
@@ -34,9 +45,16 @@
             <div class="row">
 
                 <div class="col-md-6 mb-3">
-                    <label class="fw-bold">Marca</label>
+                    <label class="fw-bold">ID de Área </label>
                     <div class="form-control">
-                        {{ $computer['brand'] }}
+                        {{ $teachers['area_id'] }}
+                    </div>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label class="fw-bold">ID Centro de Formación </label>
+                    <div class="form-control">
+                        {{ $teachers['training_center_id'] }}
                     </div>
                 </div>
 
@@ -47,16 +65,16 @@
             <div class="row">
 
                 <div class="col-md-6 mb-3">
-                    <label class="fw-bold">Fecha de creación</label>
-                    <div class="form-control text-muted">
-                        {{ \Carbon\Carbon::parse($computer['created_at'])->format('d/m/Y H:i') }}
+                    <label class="fw-bold">Fecha de registro</label>
+                    <div class="form-control text-muted bg-light">
+                        {{ \Carbon\Carbon::parse($teachers['created_at'])->format('d/m/Y H:i') }}
                     </div>
                 </div>
 
                 <div class="col-md-6 mb-3">
                     <label class="fw-bold">Última actualización</label>
-                    <div class="form-control text-muted">
-                        {{ \Carbon\Carbon::parse($computer['updated_at'])->format('d/m/Y H:i') }}
+                    <div class="form-control text-muted bg-light">
+                        {{ \Carbon\Carbon::parse($teachers['updated_at'])->format('d/m/Y H:i') }}
                     </div>
                 </div>
 

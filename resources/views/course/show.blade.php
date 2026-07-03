@@ -7,7 +7,7 @@
 
         <div class="card-header bg-primary text-white">
             <h3 class="mb-0">
-                {{ $computer['brand'] }}
+                Curso #{{ $courses['course_number'] }}
             </h3>
         </div>
 
@@ -18,14 +18,14 @@
                 <div class="col-md-6 mb-3">
                     <label class="fw-bold">ID</label>
                     <div class="form-control bg-light">
-                        {{ $computer['id'] }}
+                        {{ $courses['id'] }}
                     </div>
                 </div>
 
                 <div class="col-md-6 mb-3">
-                    <label class="fw-bold">Número</label>
+                    <label class="fw-bold">Número de Curso</label>
                     <div class="form-control">
-                        {{ $computer['number'] }}
+                        {{ $courses['course_number'] }}
                     </div>
                 </div>
 
@@ -34,9 +34,27 @@
             <div class="row">
 
                 <div class="col-md-6 mb-3">
-                    <label class="fw-bold">Marca</label>
+                    <label class="fw-bold">Fecha programada (Día)</label>
                     <div class="form-control">
-                        {{ $computer['brand'] }}
+                        {{ \Carbon\Carbon::parse($courses['day'])->format('d/m/Y') }}
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-6 mb-3">
+                    <label class="fw-bold">ID de Área </label>
+                    <div class="form-control">
+                        {{ $courses['area_id'] }}
+                    </div>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label class="fw-bold">ID Centro de Formación </label>
+                    <div class="form-control">
+                        {{ $courses['training_center_id'] }}
                     </div>
                 </div>
 
@@ -48,15 +66,15 @@
 
                 <div class="col-md-6 mb-3">
                     <label class="fw-bold">Fecha de creación</label>
-                    <div class="form-control text-muted">
-                        {{ \Carbon\Carbon::parse($computer['created_at'])->format('d/m/Y H:i') }}
+                    <div class="form-control text-muted bg-light">
+                        {{ \Carbon\Carbon::parse($courses['created_at'])->format('d/m/Y H:i') }}
                     </div>
                 </div>
 
                 <div class="col-md-6 mb-3">
                     <label class="fw-bold">Última actualización</label>
-                    <div class="form-control text-muted">
-                        {{ \Carbon\Carbon::parse($computer['updated_at'])->format('d/m/Y H:i') }}
+                    <div class="form-control text-muted bg-light">
+                        {{ \Carbon\Carbon::parse($courses['updated_at'])->format('d/m/Y H:i') }}
                     </div>
                 </div>
 

@@ -7,7 +7,7 @@
 
         <div class="card-header bg-primary text-white">
             <h3 class="mb-0">
-                {{ $computer['brand'] }}
+                {{ $Training_centers['name'] }}
             </h3>
         </div>
 
@@ -18,14 +18,14 @@
                 <div class="col-md-6 mb-3">
                     <label class="fw-bold">ID</label>
                     <div class="form-control bg-light">
-                        {{ $computer['id'] }}
+                        {{ $Training_centers['id'] }}
                     </div>
                 </div>
 
                 <div class="col-md-6 mb-3">
-                    <label class="fw-bold">Número</label>
+                    <label class="fw-bold">Nombre</label>
                     <div class="form-control">
-                        {{ $computer['number'] }}
+                        {{ $Training_centers['name'] }}
                     </div>
                 </div>
 
@@ -34,9 +34,9 @@
             <div class="row">
 
                 <div class="col-md-6 mb-3">
-                    <label class="fw-bold">Marca</label>
+                    <label class="fw-bold">Ubicación</label>
                     <div class="form-control">
-                        {{ $computer['brand'] }}
+                        {{ $Training_centers['location'] }}
                     </div>
                 </div>
 
@@ -49,14 +49,14 @@
                 <div class="col-md-6 mb-3">
                     <label class="fw-bold">Fecha de creación</label>
                     <div class="form-control text-muted">
-                        {{ \Carbon\Carbon::parse($computer['created_at'])->format('d/m/Y H:i') }}
+                        {{ \Carbon\Carbon::parse($Training_centers['created_at'])->format('d/m/Y H:i') }}
                     </div>
                 </div>
 
                 <div class="col-md-6 mb-3">
                     <label class="fw-bold">Última actualización</label>
                     <div class="form-control text-muted">
-                        {{ \Carbon\Carbon::parse($computer['updated_at'])->format('d/m/Y H:i') }}
+                        {{ \Carbon\Carbon::parse($Training_centers['updated_at'])->format('d/m/Y H:i') }}
                     </div>
                 </div>
 

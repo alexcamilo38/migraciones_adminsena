@@ -10,7 +10,14 @@ use Illuminate\Http\Request;
 class TeacherController extends Controller
 {
     //
+    public function index(){
 
+        $teachers=Teacher::all();
+
+        return view('teacher.index',compact('teachers'));
+
+
+    }
     public function registro(){
 
      $areas=Area::all();
@@ -22,5 +29,13 @@ class TeacherController extends Controller
     
     public function dato(Request $request){
         Teacher::create($request->all());
+    }
+
+    public function show ($id){
+
+     $teachers=Teacher::find($id);
+       return view('teacher.show',compact('teachers'));
+
+
     }
 }
