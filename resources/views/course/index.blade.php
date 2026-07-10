@@ -30,6 +30,7 @@
         
                         <td>
                             <a href="{{ route('course.show', $course->id) }}" class="btn btn-primary btn-sm">Mostrar</a>
+                            <a href="{{ route('course.edit', $course->id) }}">Editar</a>
                         </td>
                     </tr>
                 @endforeach

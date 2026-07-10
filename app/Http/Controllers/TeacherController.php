@@ -10,32 +10,51 @@ use Illuminate\Http\Request;
 class TeacherController extends Controller
 {
     //
-    public function index(){
+    public function index()
+    {
 
-        $teachers=Teacher::all();
+        $teachers = Teacher::all();
 
-        return view('teacher.index',compact('teachers'));
-
-
+        return view('teacher.index', compact('teachers'));
     }
-    public function registro(){
+    public function registro()
+    {
 
-     $areas=Area::all();
-     $training_centers=Training_center::all();
-        return view('teacher.registro',compact('areas','training_centers'));
-     
-
+        $areas = Area::all();
+        $training_centers = Training_center::all();
+        return view('teacher.registro', compact('areas', 'training_centers'));
     }
-    
-    public function dato(Request $request){
+
+    public function dato(Request $request)
+    {
         Teacher::create($request->all());
     }
 
-    public function show ($id){
+    public function show($id)
+    {
 
-     $teachers=Teacher::find($id);
-       return view('teacher.show',compact('teachers'));
+        $teachers = Teacher::find($id);
+        return view('teacher.show', compact('teachers'));
+    }
 
+    public function edit(Teacher $teachers)
+    {
+        //  Traemos todos los registros de las tablas foráneas
+        $areas = Area::all();
+        $training_centers = Training_center::all();
 
+        //  Enviamos todo a la vista con compact
+        return view('teacher.edit', compact('teachers', 'areas', 'training_centers'));
+    }
+
+    public function update(Request $request, Teacher $teachers)
+    {
+        $teachers->name = $request->name;
+        $teachers->email = $request->email;
+        $teachers->area_id = $request->area_id;
+        $teachers->training_center_id = $request->training_center_id;
+        $teachers->save();
+
+        return redirect()->route('teacher.index');
     }
 }

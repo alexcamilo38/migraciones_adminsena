@@ -20,8 +20,10 @@
                 @foreach ($areas as $area)
                     <tr>
                         <td>{{ $area->id }}</td>
-                        <td>{{ $area->name }}</td> <td>
-                            <a href="{{ route('areas.show', $area->id) }}" class="btn btn-primary btn-sm">Mostrar</a>
+                        <td>{{ $area->name }}</td> 
+                        <td><a href="{{ route('areas.show', $area->id) }}" class="btn btn-primary btn-sm">Mostrar</a>
+                       
+                        <a href="{{ route('areas.edit', $area->id) }}">Editar</a>
                         </td>
                     </tr>
                 @endforeach

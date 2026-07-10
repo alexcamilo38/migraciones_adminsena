@@ -25,6 +25,7 @@
                         <td>{{ $computer->brand}}</td> 
                         <td>
                             <a href="{{ route('computer.show', $computer->id) }}" class="btn btn-primary btn-sm">Mostrar</a>
+                             <a href="{{ route('computer.edit', $computer->id) }}">Editar</a>
                         </td>
                     </tr>
                 @endforeach
