@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container mt-5">
+<div class="container mt-5 mb-5">
 
     <div class="card shadow-lg border-0">
 
-        <div class="card-header bg-primary text-white">
+        <div class="card-header bg-success text-white">
             <h3 class="mb-0">
                 {{ $Training_centers['name'] }}
             </h3>

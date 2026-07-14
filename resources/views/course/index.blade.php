@@ -30,7 +30,14 @@
         
                         <td>
                             <a href="{{ route('course.show', $course->id) }}" class="btn btn-primary btn-sm">Mostrar</a>
-                            <a href="{{ route('course.edit', $course->id) }}">Editar</a>
+                            <a href="{{ route('course.edit', $course->id) }}" class="btn btn-primary btn-sm">Editar</a>
+                        </td>
+                         <td>
+                            <form action="{{ route('course.destroy', $course->id) }}" method="POST">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" class="btn btn-danger">Eliminar curso</button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach

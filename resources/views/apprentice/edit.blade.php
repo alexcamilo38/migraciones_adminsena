@@ -7,12 +7,13 @@
 
             <div class="card shadow border-0 rounded-4">
                 <div class="card-header bg-success text-white">
-                    <h4 class="mb-0">Registrar Aprendiz</h4>
+                    <h4 class="mb-0">Actualizar Aprendiz</h4>
                 </div>
 
                 <div class="card-body">
-                    <form action="{{ route('apprentice.admin') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('apprentice.update', $apprentices) }}" method="POST">
                         @csrf
+                        @method('PUT')
 
                         <div class="mb-3">
                             <label class="form-label fw-bold">
@@ -22,6 +23,7 @@
                                 type="text"
                                 name="name"
                                 class="form-control"
+                                value="{{ old('name', $apprentices->name) }}"
                                 placeholder="Ingrese el nombre del aprendiz">
                         </div>
 
@@ -33,6 +35,7 @@
                                 type="email"
                                 name="email"
                                 class="form-control"
+                                value="{{ old('email', $apprentices->email) }}"
                                 placeholder="Ingrese el correo electrónico">
                         </div>
 
@@ -41,22 +44,24 @@
                                 Número de Celular
                             </label>
                             <input
-                                type="number"
+                                type="tel"
                                 name="cell_number"
                                 class="form-control"
+                                value="{{ old('cell_number', $apprentices->cell_number) }}"
                                 placeholder="Ingrese el número de celular">
                         </div>
 
                         <div class="mb-3">
-                            <label for="course_id" class="form-label fw-bold">
+                            <label class="form-label fw-bold">
                                 Curso
                             </label>
 
-                            <select name="course_id" id="course_id" class="form-select">
-                                <option value="">Seleccione un curso</option>
+                            <select name="course_id" class="form-select">
+                                <option value="">Seleccione un curso...</option>
 
-                                @foreach ($courses as $course)
-                                    <option value="{{ $course->id }}">
+                                @foreach($courses as $course)
+                                    <option value="{{ $course->id }}"
+                                        {{ old('course_id', $apprentices->course_id) == $course->id ? 'selected' : '' }}>
                                         {{ $course->course_number }}
                                     </option>
                                 @endforeach
@@ -64,15 +69,16 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="computer_id" class="form-label fw-bold">
+                            <label class="form-label fw-bold">
                                 Computador
                             </label>
 
-                            <select name="computer_id" id="computer_id" class="form-select">
-                                <option value="">Seleccione un computador</option>
+                            <select name="computer_id" class="form-select">
+                                <option value="">Seleccione un computador...</option>
 
-                                @foreach ($computers as $computer)
-                                    <option value="{{ $computer->id }}">
+                                @foreach($computers as $computer)
+                                    <option value="{{ $computer->id }}"
+                                        {{ old('computer_id', $apprentices->computer_id) == $computer->id ? 'selected' : '' }}>
                                         {{ $computer->number }}
                                     </option>
                                 @endforeach
@@ -85,7 +91,7 @@
                             </a>
 
                             <button type="submit" class="btn btn-success">
-                                Guardar Aprendiz
+                                Actualizar Aprendiz
                             </button>
                         </div>
 

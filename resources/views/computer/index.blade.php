@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1 class="text-center my-4">LISTAR COMPUTADORES</h1>
+    <h1 class="text-center my-4">LISTA DE COMPUTADORES</h1>
 
     <div class="container">
         <table id="idcomputer" class="table table-striped table-bordered" style="width:100%">
@@ -25,7 +25,14 @@
                         <td>{{ $computer->brand}}</td> 
                         <td>
                             <a href="{{ route('computer.show', $computer->id) }}" class="btn btn-primary btn-sm">Mostrar</a>
-                             <a href="{{ route('computer.edit', $computer->id) }}">Editar</a>
+                             <a href="{{ route('computer.edit', $computer->id) }}" class="btn btn-primary btn-sm">Editar</a>
+                        </td>
+                        <td>
+                            <form action="{{ route('computer.destroy', $computer->id) }}" method="POST">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" class="btn btn-danger">Eliminar computadores</button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach

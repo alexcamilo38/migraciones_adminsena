@@ -30,7 +30,14 @@
         
                         <td>
                             <a href="{{ route('teacher.show', $teacher->id) }}" class="btn btn-primary btn-sm">Mostrar</a>
-                            <a href="{{ route('teacher.edit', $teacher->id) }}">Editar</a>
+                            <a href="{{ route('teacher.edit', $teacher->id) }}" class="btn btn-primary btn-sm">Editar</a>
+                        </td>
+                        <td>
+                            <form action="{{ route('teacher.destroy', $teacher->id) }}" method="POST">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" class="btn btn-danger">Eliminar Instructores</button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach

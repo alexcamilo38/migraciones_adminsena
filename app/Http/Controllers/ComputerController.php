@@ -47,5 +47,11 @@ class ComputerController extends Controller
         return redirect()->route('computer.index');
 
       }
+      //Destroy se encuentra el registro para luego eliminarlo..
+    public function destroy(Computer $computer)
+    {
+        $computer->delete();
+        return redirect()->route('computer.index');
+    }
 
 }

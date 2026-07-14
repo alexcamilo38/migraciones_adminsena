@@ -1,55 +1,93 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Actualizar Profesor</h1>
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
 
-    <form action="{{ route('course.update', $courses) }}" method="POST">
-        @csrf
-        @method('put')
+            <div class="card shadow border-0 rounded-4">
+                <div class="card-header bg-success text-white">
+                    <h4 class="mb-0">Actualizar Curso</h4>
+                </div>
 
-        <label>
-            Nombre:
-            <br>
-            <input type="text" name="course_number" value="{{ old('course_number', $courses->course_number) }}">
-        </label>
-        <br>
+                <div class="card-body">
+                    <form action="{{ route('course.update', $courses) }}" method="POST">
+                        @csrf
+                        @method('PUT')
 
-        <label>
-            Correo Electrónico:
-            <br>
-            <input type="date" name="day" value="{{ old('day', $courses->day) }}">
-        </label>
-        <br>
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">
+                                Número del Curso
+                            </label>
+                            <input
+                                type="text"
+                                name="course_number"
+                                class="form-control"
+                                value="{{ old('course_number', $courses->course_number) }}"
+                                placeholder="Ingrese el número del curso">
+                        </div>
 
-        <label>
-            Área:
-            <br>
-            <select name="area_id">
-                <option value="">Seleccione un área...</option>
-                @foreach($areas as $area)
-                    <option value="{{ $area->id }}" {{ old('area_id', $courses->area_id) == $area->id ? 'selected' : '' }}>
-                        {{ $area->name }}
-                    </option>
-                @endforeach
-            </select>
-        </label>
-        <br>
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">
+                                Fecha
+                            </label>
+                            <input
+                                type="date"
+                                name="day"
+                                class="form-control"
+                                value="{{ old('day', $courses->day) }}">
+                        </div>
 
-        <label>
-            Centro de Formación:
-            <br>
-            <select name="training_center_id">
-                <option value="">Seleccione un centro...</option>
-                @foreach($training_centers as $center)
-                    <option value="{{ $center->id }}" {{ old('training_center_id', $courses->training_center_id) == $center->id ? 'selected' : '' }}>
-                        {{ $center->name }}
-                    </option>
-                @endforeach
-            </select>
-        </label>
-        <br>
-        <br>
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">
+                                Área
+                            </label>
 
-        <button type="submit">Actualizar Profesor</button>
-    </form>
+                            <select name="area_id" class="form-select">
+                                <option value="">Seleccione un área...</option>
+
+                                @foreach($areas as $area)
+                                    <option value="{{ $area->id }}"
+                                        {{ old('area_id', $courses->area_id) == $area->id ? 'selected' : '' }}>
+                                        {{ $area->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">
+                                Centro de Formación
+                            </label>
+
+                            <select name="training_center_id" class="form-select">
+                                <option value="">Seleccione un centro...</option>
+
+                                @foreach($training_centers as $center)
+                                    <option value="{{ $center->id }}"
+                                        {{ old('training_center_id', $courses->training_center_id) == $center->id ? 'selected' : '' }}>
+                                        {{ $center->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+                            <a href="{{ url()->previous() }}" class="btn btn-secondary">
+                                Cancelar
+                            </a>
+
+                            <button type="submit" class="btn btn-success">
+                                Actualizar Curso
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
 @endsection

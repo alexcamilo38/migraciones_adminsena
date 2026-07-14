@@ -1,31 +1,60 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="d-flex flex-column align-items-center justify-content-center ">
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
 
-    <h1 class="text-success fw-bold mb-4 text-center">Actualizar Computadores</h1>
+            <div class="card shadow border-0 rounded-4">
+                <div class="card-header bg-success text-white">
+                    <h4 class="mb-0">Actualizar Computador</h4>
+                </div>
 
-    <form action="{{ route('computer.update', $computer) }}" method="POST" class="bg-white p-4 rounded shadow-sm w-100" style="max-width: 450px;">
+                <div class="card-body">
+                    <form action="{{ route('computer.update', $computer) }}" method="POST">
+                        @csrf
+                        @method('PUT')
 
-        @csrf
-        @method('put')
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">
+                                Número
+                            </label>
+                            <input
+                                type="text"
+                                name="number"
+                                class="form-control"
+                                value="{{ old('number', $computer->number) }}"
+                                placeholder="Ingrese el número del computador">
+                        </div>
 
-        <label class="form-label fw-bold w-100 mb-3">
-            Numero:
-            <br>
-            <input type="text" name="number" value="{{ old('number', $computer->name)}}" class="form-control mt-1">
-        </label>
-         <br>
-        <label class="form-label fw-bold w-100 mb-3">
-            Marca:
-            <br>
-            <input type="text" name="brand"  value="{{ old('brand', $computer->brand)}}" class="form-control mt-1">
-        </label>
-        <br>
-        <br>
-        <button type="submit" class="btn btn-success w-100 py-2">Actualizar Computadores</button>
-          
-    </form>
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">
+                                Marca
+                            </label>
+                            <input
+                                type="text"
+                                name="brand"
+                                class="form-control"
+                                value="{{ old('brand', $computer->brand) }}"
+                                placeholder="Ingrese la marca">
+                        </div>
 
+                        <div class="d-flex justify-content-between">
+                            <a href="{{ url()->previous() }}" class="btn btn-secondary">
+                                Cancelar
+                            </a>
+
+                            <button type="submit" class="btn btn-success">
+                                Actualizar Computador
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
 </div>
 @endsection

@@ -25,7 +25,14 @@
                         <td>{{ $Training_center->location	}}</td> 
                         <td>
                             <a href="{{ route('trainingcenters.show', $Training_center->id) }}" class="btn btn-primary btn-sm">Mostrar</a>
-                            <a href="{{ route('trainingcenters.edit', $Training_center->id) }}">Editar</a>
+                            <a href="{{ route('trainingcenters.edit', $Training_center->id) }}"class="btn btn-primary btn-sm">Editar</a>
+                        </td>
+                        <td>
+                            <form action="{{ route('trainingcenters.destroy', $Training_center->id) }}" method="POST">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" class="btn btn-danger">Eliminar Centro de formacion:</button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach

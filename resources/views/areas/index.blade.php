@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1 class="text-center my-4">LISTAR AREAS</h1>
+    <h1 class="text-center my-4">LISTA DE AREAS</h1>
 
     <div class="container">
         <table id="idArea" class="table table-striped table-bordered" style="width:100%">
@@ -21,9 +21,16 @@
                     <tr>
                         <td>{{ $area->id }}</td>
                         <td>{{ $area->name }}</td> 
-                        <td><a href="{{ route('areas.show', $area->id) }}" class="btn btn-primary btn-sm">Mostrar</a>
-                       
-                        <a href="{{ route('areas.edit', $area->id) }}">Editar</a>
+                        <td>
+                            <a href="{{ route('areas.show', $area->id) }}" class="btn btn-primary btn-sm">Mostrar</a>
+                            <a href="{{ route('areas.edit', $area->id) }}"class="btn btn-primary btn-sm">Editar</a>
+                        </td>
+                        <td>
+                            <form action="{{ route('areas.destroy', $area->id) }}" method="POST">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" class="btn btn-danger">Eliminar Area:</button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach

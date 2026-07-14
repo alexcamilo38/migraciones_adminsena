@@ -56,6 +56,12 @@ class CourseController extends Controller
         $courses->training_center_id = $request->training_center_id;
         $courses->save();
 
-        return redirect()->route('teacher.index');
+        return redirect()->route('course.index');
+    }
+    //Destroy se encuentra el registro para luego eliminarlo..
+    public function destroy(Course $courses)
+    {
+        $courses->delete();
+        return redirect()->route('course.index');
     }
 }

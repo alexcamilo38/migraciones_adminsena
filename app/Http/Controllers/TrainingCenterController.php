@@ -45,6 +45,12 @@ class TrainingCenterController extends Controller
         return redirect()->route('trainingcenters.index');
 
       }
+      //Destroy se encuentra el registro para luego eliminarlo..
+    public function destroy(Training_center $Training_centers)
+    {
+        $Training_centers->delete();
+        return redirect()->route('trainingcenters.index');
+    }
 
 
     

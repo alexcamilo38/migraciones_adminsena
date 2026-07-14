@@ -42,22 +42,25 @@ class ApprenticeController extends Controller
     public function edit(Apprentice $apprentices)
     {
         // Traemos todos los registros de las tablas foráneas
-        $apprentices = Course::all();
-        $apprentices = Computer::all();
+        $courses = Course::all();
+        $computers = Computer::all();
 
         //  Enviamos todo a la vista con compact
-        return view('apprentice.edit', compact('apprentices', 'areas', 'training_centers'));
+        return view('apprentice.edit', compact('apprentices', 'courses', 'computers'));
     }
 
     public function update(Request $request, Apprentice $apprentices)
     {
-        $apprentices->name = $request->name;
-        $apprentices->day = $request->day;
-        $apprentices->course_id = $request->course_id;
-        $apprentices->computer_id = $request->computer_id;
-        $apprentices->save();
 
-        return redirect()->route('teacher.index');
+        $apprentices->update($request->all());
+
+        return redirect()->route('apprentice.index');
+    }
+    //Destroy se encuentra el registro para luego eliminarlo..
+    public function destroy(Apprentice $apprentices)
+    {
+        $apprentices->delete();
+        return redirect()->route('apprentice.index');
     }
 
 

@@ -57,4 +57,10 @@ class TeacherController extends Controller
 
         return redirect()->route('teacher.index');
     }
+    //Destroy se encuentra el registro para luego eliminarlo..
+    public function destroy(Teacher $teachers)
+    {
+        $teachers->delete();
+        return redirect()->route('teacher.index');
+    }
 }
