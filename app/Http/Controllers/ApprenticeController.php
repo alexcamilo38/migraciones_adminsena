@@ -22,7 +22,7 @@ class ApprenticeController extends Controller
     }
 
     public function registro(){
-
+    //llamamos a todos sin necesidad de escribir uno por uno
      $courses=Course::all();
      $computers=Computer::all();
         return view('apprentice.registro',compact('courses','computers'));
@@ -51,7 +51,7 @@ class ApprenticeController extends Controller
 
     public function update(Request $request, Apprentice $apprentices)
     {
-
+    //metodo mas sencillo sin nesecidad de poner todo lo que pertenece a esa tabla
         $apprentices->update($request->all());
 
         return redirect()->route('apprentice.index');

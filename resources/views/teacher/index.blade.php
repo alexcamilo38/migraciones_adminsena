@@ -1,47 +1,88 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1 class="text-center my-4">LISTA DE PROFESORES</h1>
+    <div class="container py-4">
 
-    <div class="container">
-        <table id="idteacher" class="table table-striped table-bordered" style="width:100%">
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Nombre</th>
-                    <th>Correo</th>
-                    <th>area_id</th>
-                    <th>training_center_id</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                 <a href="{{ route('teacher.registro') }}" class="btn btn-success">
-                    <i class="bi bi-plus-circle"></i> Nuevo Profesor
-                </a>
-                <br><br>
-                @foreach ($teachers as $teacher)
-                    <tr>
-                        <td>{{ $teacher->id }}</td> 
-                        <td>{{ $teacher->name}}</td> 
-                        <td>{{ $teacher->email}}</td> 
-                        <td>{{ $teacher->area_id }}</td>
-                        <td>{{ $teacher->training_center_id }}</td>
-        
-                        <td>
-                            <a href="{{ route('teacher.show', $teacher->id) }}" class="btn btn-primary btn-sm">Mostrar</a>
-                            <a href="{{ route('teacher.edit', $teacher->id) }}" class="btn btn-primary btn-sm">Editar</a>
-                        </td>
-                        <td>
-                            <form action="{{ route('teacher.destroy', $teacher->id) }}" method="POST">
-                                @csrf
-                                @method('delete')
-                                <button type="submit" class="btn btn-danger">Eliminar Instructores</button>
-                            </form>
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1 class="fw-bold text-dark">Lista de Profesores</h1>
+
+            <a href="{{ route('teacher.registro') }}" class="btn btn-success shadow-sm">
+                <i class="bi bi-plus-circle"></i> Nuevo Profesor
+            </a>
+        </div>
+
+        <div class="card shadow-lg border-0 rounded-4">
+
+            <div class="card-header text-white encabezado-tabla" style="background-color: #25c72f;">
+                <h5 class="mb-0">Profesores Registrados</h5>
+            </div>
+
+            <div class="card-body">
+
+                <table id="idteacher" class="table table-hover align-middle mb-0">
+
+                    <thead class="table-light">
+                        <tr>
+                            <th>Id</th>
+                            <th>Nombre</th>
+                            <th>Correo</th>
+                            <th>area_id</th>
+                            <th>training_center_id</th>
+                            <th class="text-center">Acciones</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        @foreach ($teachers as $teacher)
+
+                            <tr>
+
+                                <td>{{ $teacher->id }}</td>
+
+                                <td class="fw-semibold">
+                                    {{ $teacher->name }}
+                                </td>
+
+                                <td>{{ $teacher->email }}</td>
+
+                                <td>{{ $teacher->area_id }}</td>
+
+                                <td>{{ $teacher->training_center_id }}</td>
+
+                                <td class="text-center">
+
+                                    <a href="{{ route('teacher.show', $teacher->id) }}" class="btn btn-info btn-sm me-1">
+                                        Mostrar
+                                    </a>
+
+                                    <a href="{{ route('teacher.edit', $teacher->id) }}" class="btn btn-warning btn-sm me-1">
+                                        Editar
+                                    </a>
+
+                                    <form action="{{ route('teacher.destroy', $teacher->id) }}" method="POST" class="d-inline">
+                                        @csrf
+                                        @method('delete')
+
+                                        <button type="submit" class="btn btn-danger btn-sm">
+                                            Eliminar
+                                        </button>
+
+                                    </form>
+
+                                </td>
+
+                            </tr>
+
+                        @endforeach
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
     </div>
 @endsection
