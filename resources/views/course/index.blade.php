@@ -26,8 +26,8 @@
                             <th>Id</th>
                             <th>Numero de curso</th>
                             <th>Dia</th>
-                            <th>area_id</th>
-                            <th>training_center_id</th>
+                            <th>Área</th>
+                            <th>Centro de Formación</th>
                             <th class="text-center">Acciones</th>
                         </tr>
                     </thead>
@@ -46,9 +46,9 @@
 
                                 <td>{{ $course->day }}</td>
 
-                                <td>{{ $course->area_id }}</td>
+                                <td>{{ $course->area?->name }}</td>
 
-                                <td>{{ $course->training_center_id }}</td>
+                                <td>{{ $course->training_center?->name }}</td>
 
                                 <td class="text-center">
 

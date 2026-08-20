@@ -27,8 +27,8 @@
                             <th>Nombre</th>
                             <th>Correo</th>
                             <th>Numero de Celular</th>
-                            <th>course_id</th>
-                            <th>computer_id</th>
+                            <th>Curso</th>
+                            <th>Computador</th>
                             <th class="text-center">Acciones</th>
                         </tr>
                     </thead>
@@ -49,9 +49,9 @@
 
                                 <td>{{ $apprentice->cell_number }}</td>
 
-                                <td>{{ $apprentice->course_id }}</td>
+                                <td>{{ $apprentice->course?->course_number }}</td>
 
-                                <td>{{ $apprentice->computer_id }}</td>
+                                <td>{{ $apprentice->computer?->number }}</td>
 
                                 <td class="text-center">
 

@@ -7,7 +7,7 @@
 
         <div class="card-header bg-success text-white">
             <h3 class="mb-0">
-                Profesor: {{ $teachers['name'] }}
+                Profesor: {{ $teachers->name }}
             </h3>
         </div>
 
@@ -18,14 +18,14 @@
                 <div class="col-md-6 mb-3">
                     <label class="fw-bold">ID</label>
                     <div class="form-control bg-light">
-                        {{ $teachers['id'] }}
+                        {{ $teachers->id }}
                     </div>
                 </div>
 
                 <div class="col-md-6 mb-3">
                     <label class="fw-bold">Nombre Completo</label>
                     <div class="form-control">
-                        {{ $teachers['name'] }}
+                        {{ $teachers->name }}
                     </div>
                 </div>
 
@@ -36,7 +36,7 @@
                 <div class="col-md-12 mb-3">
                     <label class="fw-bold">Correo Electrónico </label>
                     <div class="form-control">
-                        {{ $teachers['email'] }}
+                        {{ $teachers->email }}
                     </div>
                 </div>
 
@@ -45,16 +45,16 @@
             <div class="row">
 
                 <div class="col-md-6 mb-3">
-                    <label class="fw-bold">ID de Área </label>
+                    <label class="fw-bold">Área </label>
                     <div class="form-control">
-                        {{ $teachers['area_id'] }}
+                        {{ $teachers->area?->name }}
                     </div>
                 </div>
 
                 <div class="col-md-6 mb-3">
-                    <label class="fw-bold">ID Centro de Formación </label>
+                    <label class="fw-bold">Centro de Formación </label>
                     <div class="form-control">
-                        {{ $teachers['training_center_id'] }}
+                        {{ $teachers->training_center?->name }}
                     </div>
                 </div>
 
@@ -67,14 +67,14 @@
                 <div class="col-md-6 mb-3">
                     <label class="fw-bold">Fecha de registro</label>
                     <div class="form-control text-muted bg-light">
-                        {{ \Carbon\Carbon::parse($teachers['created_at'])->format('d/m/Y H:i') }}
+                        {{ \Carbon\Carbon::parse($teachers->created_at)->format('d/m/Y H:i') }}
                     </div>
                 </div>
 
                 <div class="col-md-6 mb-3">
                     <label class="fw-bold">Última actualización</label>
                     <div class="form-control text-muted bg-light">
-                        {{ \Carbon\Carbon::parse($teachers['updated_at'])->format('d/m/Y H:i') }}
+                        {{ \Carbon\Carbon::parse($teachers->updated_at)->format('d/m/Y H:i') }}
                     </div>
                 </div>
 

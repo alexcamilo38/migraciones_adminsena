@@ -13,7 +13,7 @@ class Apprentice extends Model
         return $this->belongsTo('App\Models\course');
     }
     public function computer(){
-        return $this->hasOne('App\Models\computer');
+        return $this->belongsTo('App\Models\computer');
     }
     
     protected $fillable = [

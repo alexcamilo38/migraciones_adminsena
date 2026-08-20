@@ -7,7 +7,7 @@
 
         <div class="card-header bg-success text-white">
             <h3 class="mb-0">
-                Aprendiz: {{ $apprentices['name'] }}
+                Aprendiz: {{ $apprentices->name }}
             </h3>
         </div>
 
@@ -18,14 +18,14 @@
                 <div class="col-md-6 mb-3">
                     <label class="fw-bold">ID</label>
                     <div class="form-control bg-light">
-                        {{ $apprentices['id'] }}
+                        {{ $apprentices->id }}
                     </div>
                 </div>
 
                 <div class="col-md-6 mb-3">
                     <label class="fw-bold">Nombre Completo</label>
                     <div class="form-control">
-                        {{ $apprentices['name'] }}
+                        {{ $apprentices->name }}
                     </div>
                 </div>
 
@@ -34,16 +34,16 @@
             <div class="row">
 
                 <div class="col-md-6 mb-3">
-                    <label class="fw-bold">Correo Electronico </label>
+                    <label class="fw-bold">Correo Electrónico </label>
                     <div class="form-control">
-                        {{ $apprentices['email'] }}
+                        {{ $apprentices->email }}
                     </div>
                 </div>
 
                 <div class="col-md-6 mb-3">
-                    <label class="fw-bold">Numero de Celular</label>
+                    <label class="fw-bold">Número de Celular</label>
                     <div class="form-control">
-                        {{ $apprentices['cell_number'] }}
+                        {{ $apprentices->cell_number }}
                     </div>
                 </div>
 
@@ -52,16 +52,16 @@
             <div class="row">
 
                 <div class="col-md-6 mb-3">
-                    <label class="fw-bold">ID de Curso </label>
+                    <label class="fw-bold">Número de Curso</label>
                     <div class="form-control">
-                        {{ $apprentices['course_id'] }}
+                        {{ $apprentices->course?->course_number }}
                     </div>
                 </div>
 
                 <div class="col-md-6 mb-3">
-                    <label class="fw-bold">ID de Computador</label>
+                    <label class="fw-bold">Número de Computador</label>
                     <div class="form-control">
-                        {{ $apprentices['computer_id'] }}
+                        {{ $apprentices->computer?->number }}
                     </div>
                 </div>
 
@@ -74,14 +74,14 @@
                 <div class="col-md-6 mb-3">
                     <label class="fw-bold">Fecha de registro</label>
                     <div class="form-control text-muted bg-light">
-                        {{ \Carbon\Carbon::parse($apprentices['created_at'])->format('d/m/Y H:i') }}
+                        {{ \Carbon\Carbon::parse($apprentices->created_at)->format('d/m/Y H:i') }}
                     </div>
                 </div>
 
                 <div class="col-md-6 mb-3">
                     <label class="fw-bold">Última actualización</label>
                     <div class="form-control text-muted bg-light">
-                        {{ \Carbon\Carbon::parse($apprentices['updated_at'])->format('d/m/Y H:i') }}
+                        {{ \Carbon\Carbon::parse($apprentices->updated_at)->format('d/m/Y H:i') }}
                     </div>
                 </div>
 
