@@ -25,6 +25,7 @@ class AreaController extends Controller
     public function salida(Request $request){
        //si se le pone el  return Area::create($request->all()); muestra los datos escritos
         Area::create($request->all());
+        return redirect()->route('areas.index');
 
     }
 

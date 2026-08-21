@@ -29,7 +29,8 @@ class ApprenticeController extends Controller
     }
     
     public function dato(Request $request){
-        Apprentice::create($request->all());
+         Apprentice::create($request->all());
+         return redirect()->route('apprentice.index');
     }
     
     public function show ($id){

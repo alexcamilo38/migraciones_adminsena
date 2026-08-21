@@ -23,6 +23,8 @@ class ComputerController extends Controller
     }
     public function model(Request $request){
          Computer::create($request->all());
+         return redirect()->route('computer.index');
+         
     }
 
     public function show ($id){

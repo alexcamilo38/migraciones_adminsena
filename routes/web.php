@@ -4,6 +4,7 @@ use App\Http\Controllers\ApprenticeController;
 use App\Http\Controllers\AreaController;
 use App\Http\Controllers\ComputerController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\ProgramaController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\TrainingCenterController;
 use Illuminate\Support\Facades\Route;
@@ -32,6 +33,11 @@ Route::get('/login', function () {
 Route::get('/register', function () {
      return view('login.register');
 });
+Route::get('/admin', function () {
+     return view('programas.homeadmin');
+});
+Route::get('/programas', [ProgramaController::class, 'index'])->name('programas.index');
+Route::get('/programas/{id}', [ProgramaController::class, 'show'])->name('programas.show');
 
 Route::get('areas/create', [AreaController::class, 'create'])->name('areas.create');
 Route::get('areas/list', [AreaController::class, 'index'])->name('areas.index');

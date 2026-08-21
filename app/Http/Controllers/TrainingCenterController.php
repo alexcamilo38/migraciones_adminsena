@@ -23,6 +23,7 @@ class TrainingCenterController extends Controller
     
     public function dato(Request $request){
         Training_center::create($request->all());
+        return redirect()->route('trainingcenters.index');
     }
     public function show ($id){
 

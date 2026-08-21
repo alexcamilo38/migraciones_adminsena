@@ -25,7 +25,7 @@
                     <div class="carousel-caption">
                         <h1>ADMIN SENA</h1>
                         <p>Bienvenido al sistema de gestión académica</p>
-                        <a href="/areas/create" class="btn btn-success btn-lg px-5">Comenzar</a>
+                        <a href="/admin" class="btn btn-success btn-lg px-5">Comenzar</a>
                     </div>
                 </div>
 
@@ -107,7 +107,7 @@
                             <li>⏱️ <strong>Duración:</strong> 27 Meses</li>
                             <li>📍 <strong>Modalidad:</strong> Presencial / Virtual</li>
                         </ul>
-                        <a href="/course/list" class="btn btn-outline-success w-100 fw-bold">Ver Detalles</a>
+                        <a href="{{ route('programas.show', 1) }}" class="btn btn-outline-success w-100 fw-bold">Ver Detalles</a>
                     </div>
                 </div>
             </div>
@@ -126,7 +126,7 @@
                             <li>⏱️ <strong>Duración:</strong> 15 Meses</li>
                             <li>📍 <strong>Modalidad:</strong> Presencial</li>
                         </ul>
-                        <a href="/course/list" class="btn btn-outline-success w-100 fw-bold">Ver Detalles</a>
+                        <a href="{{ route('programas.show', 2) }}" class="btn btn-outline-success w-100 fw-bold">Ver Detalles</a>
                     </div>
                 </div>
             </div>
@@ -145,7 +145,7 @@
                             <li>⏱️ <strong>Duración:</strong> 24 Meses</li>
                             <li>📍 <strong>Modalidad:</strong> Virtual</li>
                         </ul>
-                        <a href="/course/list" class="btn btn-outline-success w-100 fw-bold">Ver Detalles</a>
+                        <a href="{{ route('programas.show', 3) }}" class="btn btn-outline-success w-100 fw-bold">Ver Detalles</a>
                     </div>
                 </div>
             </div>
@@ -164,7 +164,7 @@
                             <li>⏱️ <strong>Duración:</strong> 24 Meses</li>
                             <li>📍 <strong>Modalidad:</strong> Presencial</li>
                         </ul>
-                        <a href="/course/list" class="btn btn-outline-success w-100 fw-bold">Ver Detalles</a>
+                        <a href="{{ route('programas.show', 4) }}" class="btn btn-outline-success w-100 fw-bold">Ver Detalles</a>
                     </div>
                 </div>
             </div>
@@ -183,7 +183,7 @@
                             <li>⏱️ <strong>Duración:</strong> 15 Meses</li>
                             <li>📍 <strong>Modalidad:</strong> Virtual / Presencial</li>
                         </ul>
-                        <a href="/course/list" class="btn btn-outline-success w-100 fw-bold">Ver Detalles</a>
+                        <a href="{{ route('programas.show', 5) }}" class="btn btn-outline-success w-100 fw-bold">Ver Detalles</a>
                     </div>
                 </div>
             </div>
@@ -202,7 +202,7 @@
                             <li>⏱️ <strong>Duración:</strong> 27 Meses</li>
                             <li>📍 <strong>Modalidad:</strong> Presencial</li>
                         </ul>
-                        <a href="/course/list" class="btn btn-outline-success w-100 fw-bold">Ver Detalles</a>
+                        <a href="{{ route('programas.show', 6) }}" class="btn btn-outline-success w-100 fw-bold">Ver Detalles</a>
                     </div>
                 </div>
             </div>
@@ -211,12 +211,10 @@
 
         <!-- Botón Ver Más -->
         <div class="text-center mt-5">
-            <a href="/course/list" class="btn btn-success btn-lg px-5 shadow-sm fw-bold">
+            <a href="{{ route('programas.index') }}" class="btn btn-success btn-lg px-5 shadow-sm fw-bold">
                 Ver Todas las Ofertas
             </a>
         </div>
-
-    </div>
 
     </div>
 @endsection

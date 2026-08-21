@@ -28,6 +28,8 @@ class TeacherController extends Controller
     public function dato(Request $request)
     {
         Teacher::create($request->all());
+        return redirect()->route('teacher.index');
+        
     }
 
     public function show($id)

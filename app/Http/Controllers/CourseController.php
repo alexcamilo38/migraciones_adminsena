@@ -30,6 +30,7 @@ class CourseController extends Controller
     public function dato(Request $request)
     {
         Course::create($request->all());
+         return redirect()->route('course.index');
     }
 
     public function show($id)

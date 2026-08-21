@@ -33,7 +33,7 @@
             <li class="nav-item dropdown">
                 <a class="btn btn-light dropdown-toggle text-dark fw-medium px-3" href="#" role="button"
                     data-bs-toggle="dropdown" aria-expanded="false">
-                    Asministracion
+                    Administracion
                 </a>
 
                 <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0 mt-2">
