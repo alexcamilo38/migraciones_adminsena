@@ -5,12 +5,10 @@
     <div class="card border-0 shadow-lg overflow-hidden" style="width: 100%; max-width: 980px; border-radius: 24px;">
         <div class="row g-0">
             
-            <!-- COLUMNA IZQUIERDA: Panel Lateral Institucional -->
             <div class="col-lg-5 text-white d-none d-lg-flex flex-column justify-content-between p-5" 
                  style="background: linear-gradient(145deg, #00324d 0%, #001f31 100%);">
                 
                 <div>
-                    <!-- Logo / Identidad -->
                     <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-3 shadow-sm"
                          style="width: 56px; height: 56px; background-color: rgba(255, 255, 255, 0.12);">
                         <span class="fs-3">🔑</span>
@@ -19,7 +17,6 @@
                     <p class="small text-white-50">Portal de Acceso Administrativo</p>
                 </div>
 
-                <!-- Mensaje de Bienvenida -->
                 <div class="my-auto py-4">
                     <h5 class="fw-bold text-white mb-2">¡Bienvenido de nuevo!</h5>
                     <p class="text-white-50 small mb-4">
@@ -33,13 +30,10 @@
                     </div>
                 </div>
 
-                
             </div>
 
-            <!-- COLUMNA DERECHA: Formulario de Login -->
             <div class="col-lg-7 p-4 p-xl-5 bg-white d-flex flex-column justify-content-center">
                 
-                <!-- Encabezado -->
                 <div class="d-flex justify-content-between align-items-center mb-4">
                     <div>
                         <h2 class="fw-bold text-dark mb-0 fs-3">Iniciar Sesión</h2>
@@ -53,10 +47,8 @@
                 <form method="POST" action="{{ url('/login') }}">
                     @csrf
 
-                    <!-- Bloque de Credenciales -->
                     <div class="p-4 mb-3 rounded-3" style="background-color: #f8f9fa; border: 1px solid #edf2f7;">
                         
-                        <!-- Campo: Correo Electrónico -->
                         <div class="mb-3">
                             <label for="email" class="form-label fw-semibold text-secondary small mb-1">Correo Electrónico</label>
                             <input id="email" 
@@ -77,7 +69,6 @@
                             @enderror
                         </div>
 
-                        <!-- Campo: Selección de Rol -->
                         <div class="mb-3">
                             <label for="role" class="form-label fw-semibold text-secondary small mb-1">Ingresar como (Rol)</label>
                             <select id="role" 
@@ -98,7 +89,6 @@
                             @enderror
                         </div>
 
-                        <!-- Campo: Contraseña -->
                         <div class="mb-0">
                             <label for="password" class="form-label fw-semibold text-secondary small mb-1">Contraseña</label>
                             <input id="password" 
@@ -119,7 +109,6 @@
 
                     </div>
 
-                    <!-- Recordarme u Olvidé Contraseña -->
                     <div class="d-flex justify-content-between align-items-center mb-4 px-1">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
@@ -132,16 +121,15 @@
                         </a>
                     </div>
 
-                    <!-- Botones de Acción Principal y Registro Directo -->
                     <div class="d-grid gap-2 mb-3">
-                        <button type="submit" 
-                            class="btn text-white fw-bold py-2 shadow-sm" 
+                        <a href="{{ url('/admin') }}" 
+                            class="btn text-white fw-bold py-2 shadow-sm d-flex justify-content-center align-items-center text-decoration-none" 
                             style="background-color: #39A900; border: none; border-radius: 10px; font-size: 0.95rem;">
                             Ingresar a la Plataforma
-                        </button>
+                        </a>
 
                         <a href="{{ url('/register') }}" 
-                            class="btn fw-semibold py-2 shadow-sm" 
+                            class="btn fw-semibold py-2 shadow-sm text-decoration-none" 
                             style="border-radius: 10px; font-size: 0.9rem; border: 1px solid #00324d; color: #00324d; background-color: transparent;">
                             Crear una cuenta nueva
                         </a>
@@ -149,7 +137,6 @@
 
                 </form>
 
-                <!-- Pie visible directamente sin condicionales -->
                 <div class="text-center pt-3 border-top">
                     <p class="text-muted small mb-0">
                         ¿No tienes una cuenta? 

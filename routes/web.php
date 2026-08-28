@@ -36,6 +36,10 @@ Route::get('/register', function () {
 Route::get('/admin', function () {
      return view('programas.homeadmin');
 });
+
+Route::get('/profile', function () {
+     return view('profile.profile');
+});
 Route::get('/programas', [ProgramaController::class, 'index'])->name('programas.index');
 Route::get('/programas/{id}', [ProgramaController::class, 'show'])->name('programas.show');
 
