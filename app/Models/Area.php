@@ -18,6 +18,12 @@ class Area extends Model
     public function courses(){
         return $this->hasMany('App\Models\couse');
     }
+
+    public function programs()
+    {
+        return $this->hasMany('App\Models\Program');
+    }
+    
     protected $fillable = [
         'name',
        

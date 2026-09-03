@@ -8,14 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class Computer extends Model
 {
     use HasFactory;
-    public function apprentice(){
+    public function apprentice()
+    {
         return $this->hasOne('App\Models\apprentice');
     }
 
-    protected $fillable = [  
+    public function environment()
+    {
+        return $this->belongsTo('App\Models\environment');
+    }
+
+    protected $fillable = [
         'number',
         'brand',
     ];
-
-    
 }

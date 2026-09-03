@@ -42,4 +42,21 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+
+    // Helpers de rol
+    public function isAdmin(): bool
+    {
+        return $this->role === 'admin';
+    }
+ 
+    public function isInstructor(): bool
+    {
+        return $this->role === 'instructor';
+    }
+ 
+    public function isApprentice(): bool
+    {
+        return $this->role === 'aprendiz';
+    }
 }
