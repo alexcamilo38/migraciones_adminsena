@@ -4,62 +4,63 @@
     <div class="container py-4">
 
         <div class="d-flex justify-content-between align-items-center mb-4">
-            <h1 class="fw-bold text-dark">Lista de Computadores</h1>
+            <h1 class="fw-bold text-dark">Lista de Fichas</h1>
 
-            <a href="{{ route('computer.computador') }}" class="btn btn-success shadow-sm">
-                <i class="bi bi-plus-circle"></i> Nuevo Computador
+            <a href="{{ route('cohorts.create') }}" class="btn btn-success shadow-sm">
+                <i class="bi bi-plus-circle"></i> Nueva Ficha
             </a>
         </div>
 
         <div class="card shadow-lg border-0 rounded-4">
 
             <div class="card-header text-white encabezado-tabla" style="background-color: #25c72f;">
-                <h5 class="mb-0">Computadores Registrados</h5>
+                <h5 class="mb-0">Fichas Registradas</h5>
             </div>
 
             <div class="card-body">
 
-                <table id="idcomputer" class="table table-hover align-middle mb-0">
+                <table id="idcohort" class="table table-hover align-middle mb-0">
 
                     <thead class="table-light">
                         <tr>
                             <th>Id</th>
-                            <th>Número</th>
-                            <th>Marca</th>
-                            <th>Ambiente</th>
+                            <th>Código / Ficha</th>
+                            <th>Fecha de Inicio</th>
+                            <th>Horario</th>
+                            <th>Oferta</th>
                             <th class="text-center">Acciones</th>
                         </tr>
                     </thead>
 
                     <tbody>
 
-                        @foreach ($computer as $computer)
+                        @foreach ($cohorts as $cohort)
 
                             <tr>
 
-                                <td>{{ $computer->id }}</td>
+                                <td>{{ $cohort->id }}</td>
 
                                 <td class="fw-semibold">
-                                    {{ $computer->number }}
+                                    {{ $cohort->code }}
                                 </td>
 
-                                <td>{{ $computer->brand }}</td>
+                                <td>{{ $cohort->start_date }}</td>
 
-                                <td>
-                                    {{ $computer->environment?->name ?? 'Ambiente #' . $computer->environment_id }}
-                                </td>
+                                <td>{{ $cohort->schedule }}</td>
+
+                                <td>Oferta #{{ $cohort->offer?->id }} - {{ $cohort->offer?->shift }}</td>
 
                                 <td class="text-center">
 
-                                    <a href="{{ route('computer.show', $computer->id) }}" class="btn btn-info btn-sm me-1">
+                                    <a href="{{ route('cohorts.show', $cohort->id) }}" class="btn btn-info btn-sm me-1">
                                         Mostrar
                                     </a>
 
-                                    <a href="{{ route('computer.edit', $computer->id) }}" class="btn btn-warning btn-sm me-1">
+                                    <a href="{{ route('cohorts.edit', $cohort->id) }}" class="btn btn-warning btn-sm me-1">
                                         Editar
                                     </a>
 
-                                    <form action="{{ route('computer.destroy', $computer->id) }}" method="POST" class="d-inline">
+                                    <form action="{{ route('cohorts.destroy', $cohort->id) }}" method="POST" class="d-inline">
                                         @csrf
                                         @method('delete')
 

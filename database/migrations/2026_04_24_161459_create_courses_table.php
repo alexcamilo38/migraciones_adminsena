@@ -16,20 +16,29 @@ return new class extends Migration
             $table->integer('course_number');
             $table->date('day');
 
-             $table->unsignedBigInteger('area_id')->nullable();
-
-           $table->foreign('area_id')
-           ->references('id')
-           ->on('areas')
-           ->onDelete('set null')
-           ->onUpdate('set null');
-
 
             $table->unsignedBigInteger('training_center_id')->nullable();
 
            $table->foreign('training_center_id')
            ->references('id')
            ->on('training_centers')
+           ->onDelete('set null')
+           ->onUpdate('set null');
+
+           $table->unsignedBigInteger('cohort_id')->nullable();
+
+           $table->foreign('cohort_id')
+           ->references('id')
+           ->on('cohorts')
+           ->onDelete('set null')
+           ->onUpdate('set null');
+
+            
+            $table->unsignedBigInteger('environment_id')->nullable();
+
+           $table->foreign('environment_id')
+           ->references('id')
+           ->on('environments')
            ->onDelete('set null')
            ->onUpdate('set null');
             $table->timestamps();

@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Computer;
+use App\Models\Environment;
 use Illuminate\Http\Request;
 
 class ComputerController extends Controller
 {
     //
-
+ 
     public function index(){
 
         $computer=Computer::all();
@@ -19,7 +20,8 @@ class ComputerController extends Controller
     }
 
     public function marca(){
-        return view('computer.computador');
+        $environments=Environment::all();
+        return view('computer.computador',compact('environments'));
     }
     public function model(Request $request){
          Computer::create($request->all());
@@ -36,15 +38,13 @@ class ComputerController extends Controller
     }
      public function edit(Computer $computer)
     { //Encuentro el Curso
-
-        return view('computer.edit', compact('computer'));
+         $environments=Environment::all();
+        return view('computer.edit', compact('computer','environments'));
     }
 
      public function update(Request $request, Computer $computer){
-
-        $computer->number = $request->number;
-        $computer->brand = $request->brand;
-        $computer->save();
+        //metodo mas sencillo sin nesecidad de poner todo lo que pertenece a esa tabla
+        $computer->update($request->all());
 
         return redirect()->route('computer.index');
 

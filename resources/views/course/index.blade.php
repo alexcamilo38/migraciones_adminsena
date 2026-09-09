@@ -24,10 +24,11 @@
                     <thead class="table-light">
                         <tr>
                             <th>Id</th>
-                            <th>Numero de curso</th>
-                            <th>Dia</th>
-                            <th>Área</th>
+                            <th>Número de curso</th>
+                            <th>Día</th>
                             <th>Centro de Formación</th>
+                            <th>Ficha</th>
+                            <th>Ambiente</th>
                             <th class="text-center">Acciones</th>
                         </tr>
                     </thead>
@@ -46,9 +47,17 @@
 
                                 <td>{{ $course->day }}</td>
 
-                                <td>{{ $course->area?->name }}</td>
+                                <td>
+                                    {{ $course->training_center?->name ?? $course->trainingCenter?->name ?? ($course->training_center_id ? 'Centro #' . $course->training_center_id : 'Sin centro') }}
+                                </td>
 
-                                <td>{{ $course->training_center?->name }}</td>
+                                <td>
+                                    {{ $course->cohort?->name ?? $course->cohort?->code ?? ($course->cohort_id ? 'Cohorte #' . $course->cohort_id : 'Sin Ficha') }}
+                                </td>
+
+                                <td>
+                                    {{ $course->environment?->name ?? ($course->environment_id ? 'Ambiente #' . $course->environment_id : 'Sin ambiente') }}
+                                </td>
 
                                 <td class="text-center">
 

@@ -7,48 +7,56 @@
 
             <div class="card shadow border-0 rounded-4">
                 <div class="card-header bg-success text-white">
-                    <h4 class="mb-0">Actualizar Computador</h4>
+                    <h4 class="mb-0">Registrar Oferta</h4>
                 </div>
 
                 <div class="card-body">
-                    <form action="{{ route('computer.update', $computer) }}" method="POST">
+                    <form action="{{ route('offers.admin') }}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        @method('PUT')
 
                         <div class="mb-3">
                             <label class="form-label fw-bold">
-                                Número
-                            </label>
-                            <input
-                                type="number"
-                                name="number"
-                                class="form-control"
-                                value="{{ old('number', $computer->number) }}"
-                                placeholder="Ingrese el número del computador">
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label fw-bold">
-                                Marca
+                                Jornada
                             </label>
                             <input
                                 type="text"
-                                name="brand"
+                                name="shift"
                                 class="form-control"
-                                value="{{ old('brand', $computer->brand) }}"
-                                placeholder="Ingrese la marca">
+                                placeholder="Ingrese la jornada (Ej. Mañana, Tarde, Noche)">
                         </div>
 
                         <div class="mb-3">
-                            <label for="environment_id" class="form-label fw-bold">
-                                Ambiente de Formación
+                            <label class="form-label fw-bold">
+                                Fecha de Inscripción
                             </label>
-                            <select name="environment_id" id="environment_id" class="form-select">
-                                <option value="">Seleccione un ambiente...</option>
-                                @foreach ($environments as $environment)
-                                    <option value="{{ $environment->id }}"
-                                        {{ old('environment_id', $computer->environment_id) == $environment->id ? 'selected' : '' }}>
-                                        Ambiente {{ $environment->name ?? $environment->id }}
+                            <input
+                                type="date"
+                                name="registration_date"
+                                class="form-control">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">
+                                Capacidad / Cupos
+                            </label>
+                            <input
+                                type="number"
+                                name="capacity"
+                                class="form-control"
+                                placeholder="Ingrese la cantidad de cupos disponibles">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="program_id" class="form-label fw-bold">
+                                Programa de Formación
+                            </label>
+
+                            <select name="program_id" id="program_id" class="form-select">
+                                <option value="">Seleccione un programa de formación</option>
+
+                                @foreach ($programs as $program)
+                                    <option value="{{ $program->id }}">
+                                        {{ $program->name }}
                                     </option>
                                 @endforeach
                             </select>
@@ -60,7 +68,7 @@
                             </a>
 
                             <button type="submit" class="btn btn-success">
-                                Actualizar Computador
+                                Guardar Oferta
                             </button>
                         </div>
 

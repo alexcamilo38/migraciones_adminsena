@@ -20,4 +20,8 @@ class Announcement extends Model
         'publish_date',
         'training_center_id',
     ];
+
+    protected $guarded = [
+        'urlFoto'
+    ];
 }

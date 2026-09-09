@@ -7,7 +7,7 @@
 
         <div class="card-header bg-success text-white">
             <h3 class="mb-0">
-                Curso #{{ $courses->course_number }}
+                Ficha #{{ $cohorts->code }}
             </h3>
         </div>
 
@@ -18,32 +18,14 @@
                 <div class="col-md-6 mb-3">
                     <label class="fw-bold">ID</label>
                     <div class="form-control bg-light">
-                        {{ $courses->id }}
+                        {{ $cohorts->id }}
                     </div>
                 </div>
 
                 <div class="col-md-6 mb-3">
-                    <label class="fw-bold">Número de Curso</label>
+                    <label class="fw-bold">Código de ficha</label>
                     <div class="form-control">
-                        {{ $courses->course_number }}
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="row">
-
-                <div class="col-md-6 mb-3">
-                    <label class="fw-bold">Fecha programada (Día)</label>
-                    <div class="form-control">
-                        {{ \Carbon\Carbon::parse($courses->day)->format('d/m/Y') }}
-                    </div>
-                </div>
-
-                <div class="col-md-6 mb-3">
-                    <label class="fw-bold">Centro de Formación</label>
-                    <div class="form-control">
-                        {{ $courses->training_center?->name }}
+                        {{ $cohorts->code }}
                     </div>
                 </div>
 
@@ -52,16 +34,27 @@
             <div class="row">
 
                 <div class="col-md-6 mb-3">
-                    <label class="fw-bold">Cohorte / Ficha</label>
+                    <label class="fw-bold">Fecha de Inicio</label>
                     <div class="form-control">
-                        {{ $courses->cohort?->name ?? $courses->cohort?->code }}
+                        {{ \Carbon\Carbon::parse($cohorts->start_date)->format('d/m/Y') }}
                     </div>
                 </div>
 
                 <div class="col-md-6 mb-3">
-                    <label class="fw-bold">Ambiente Formativo</label>
+                    <label class="fw-bold">Horario</label>
                     <div class="form-control">
-                        {{ $courses->environment?->name }}
+                        {{ $cohorts->schedule }}
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-6 mb-3">
+                    <label class="fw-bold">Oferta Asociada</label>
+                    <div class="form-control">
+                        Oferta #{{ $cohorts->offer?->id }} - {{ $cohorts->offer?->shift }}
                     </div>
                 </div>
 
@@ -74,14 +67,14 @@
                 <div class="col-md-6 mb-3">
                     <label class="fw-bold">Fecha de creación</label>
                     <div class="form-control text-muted bg-light">
-                        {{ \Carbon\Carbon::parse($courses->created_at)->format('d/m/Y H:i') }}
+                        {{ \Carbon\Carbon::parse($cohorts->created_at)->format('d/m/Y H:i') }}
                     </div>
                 </div>
 
                 <div class="col-md-6 mb-3">
                     <label class="fw-bold">Última actualización</label>
                     <div class="form-control text-muted bg-light">
-                        {{ \Carbon\Carbon::parse($courses->updated_at)->format('d/m/Y H:i') }}
+                        {{ \Carbon\Carbon::parse($cohorts->updated_at)->format('d/m/Y H:i') }}
                     </div>
                 </div>
 

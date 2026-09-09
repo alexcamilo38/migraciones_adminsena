@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('location');
+            $table->string('urlFoto')->nullable();
             $table->unsignedBigInteger('training_center_id')->nullable();
 
             $table->foreign('training_center_id')

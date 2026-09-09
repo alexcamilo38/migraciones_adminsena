@@ -11,39 +11,44 @@
                 </div>
 
                 <div class="card-body">
-                    <form action="{{ route('computer.model') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('computer.model') }}" method="POST">
                         @csrf
 
                         <div class="mb-3">
-                            <label class="form-label fw-bold">
-                                Número
-                            </label>
+                            <label class="form-label fw-bold">Número</label>
                             <input
                                 type="number"
                                 name="number"
                                 class="form-control"
+                                value="{{ old('number') }}"
                                 placeholder="Ingrese el número del computador">
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label fw-bold">
-                                Marca
-                            </label>
+                            <label class="form-label fw-bold">Marca</label>
                             <input
                                 type="text"
                                 name="brand"
                                 class="form-control"
+                                value="{{ old('brand') }}"
                                 placeholder="Ingrese la marca del computador">
                         </div>
 
-                        <div class="d-flex justify-content-between">
-                            <a href="{{ url()->previous() }}" class="btn btn-secondary">
-                                Cancelar
-                            </a>
+                        <div class="mb-3">
+                            <label for="environment_id" class="form-label fw-bold">Ambiente Formativo</label>
+                            <select name="environment_id" id="environment_id" class="form-select">
+                                <option value="">Seleccione un ambiente...</option>
+                                @foreach ($environments as $environment)
+                                    <option value="{{ $environment->id }}" {{ old('environment_id') == $environment->id ? 'selected' : '' }}>
+                                        Ambiente {{ $environment->name ?? $environment->id }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
 
-                            <button type="submit" class="btn btn-success">
-                                Guardar Computador
-                            </button>
+                        <div class="d-flex justify-content-between">
+                            <a href="{{ route('computer.index') }}" class="btn btn-secondary">Cancelar</a>
+                            <button type="submit" class="btn btn-success">Guardar Computador</button>
                         </div>
 
                     </form>

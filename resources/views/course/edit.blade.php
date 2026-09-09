@@ -20,7 +20,7 @@
                                 Número del Curso
                             </label>
                             <input
-                                type="text"
+                                type="number"
                                 name="course_number"
                                 class="form-control"
                                 value="{{ old('course_number', $courses->course_number) }}"
@@ -40,23 +40,6 @@
 
                         <div class="mb-3">
                             <label class="form-label fw-bold">
-                                Área
-                            </label>
-
-                            <select name="area_id" class="form-select">
-                                <option value="">Seleccione un área...</option>
-
-                                @foreach($areas as $area)
-                                    <option value="{{ $area->id }}"
-                                        {{ old('area_id', $courses->area_id) == $area->id ? 'selected' : '' }}>
-                                        {{ $area->name }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label fw-bold">
                                 Centro de Formación
                             </label>
 
@@ -67,6 +50,40 @@
                                     <option value="{{ $center->id }}"
                                         {{ old('training_center_id', $courses->training_center_id) == $center->id ? 'selected' : '' }}>
                                         {{ $center->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">
+                                Cohorte / Ficha
+                            </label>
+
+                            <select name="cohort_id" class="form-select">
+                                <option value="">Seleccione una cohorte...</option>
+
+                                @foreach($cohorts as $cohort)
+                                    <option value="{{ $cohort->id }}"
+                                        {{ old('cohort_id', $courses->cohort_id) == $cohort->id ? 'selected' : '' }}>
+                                        {{ $cohort->name ?? $cohort->code ?? 'Cohorte #' . $cohort->id }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">
+                                Ambiente Formativo
+                            </label>
+
+                            <select name="environment_id" class="form-select">
+                                <option value="">Seleccione un ambiente...</option>
+
+                                @foreach($environments as $environment)
+                                    <option value="{{ $environment->id }}"
+                                        {{ old('environment_id', $courses->environment_id) == $environment->id ? 'selected' : '' }}>
+                                        Ambiente {{ $environment->name ?? $environment->id }}
                                     </option>
                                 @endforeach
                             </select>

@@ -7,48 +7,56 @@
 
             <div class="card shadow border-0 rounded-4">
                 <div class="card-header bg-success text-white">
-                    <h4 class="mb-0">Actualizar Computador</h4>
+                    <h4 class="mb-0">Registrar Ficha</h4>
                 </div>
 
                 <div class="card-body">
-                    <form action="{{ route('computer.update', $computer) }}" method="POST">
+                    <form action="{{ route('cohorts.admin') }}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        @method('PUT')
 
                         <div class="mb-3">
                             <label class="form-label fw-bold">
-                                Número
-                            </label>
-                            <input
-                                type="number"
-                                name="number"
-                                class="form-control"
-                                value="{{ old('number', $computer->number) }}"
-                                placeholder="Ingrese el número del computador">
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label fw-bold">
-                                Marca
+                                Código de la Ficha
                             </label>
                             <input
                                 type="text"
-                                name="brand"
+                                name="code"
                                 class="form-control"
-                                value="{{ old('brand', $computer->brand) }}"
-                                placeholder="Ingrese la marca">
+                                placeholder="Ingrese el código o número de la ficha">
                         </div>
 
                         <div class="mb-3">
-                            <label for="environment_id" class="form-label fw-bold">
-                                Ambiente de Formación
+                            <label class="form-label fw-bold">
+                                Fecha de Inicio
                             </label>
-                            <select name="environment_id" id="environment_id" class="form-select">
-                                <option value="">Seleccione un ambiente...</option>
-                                @foreach ($environments as $environment)
-                                    <option value="{{ $environment->id }}"
-                                        {{ old('environment_id', $computer->environment_id) == $environment->id ? 'selected' : '' }}>
-                                        Ambiente {{ $environment->name ?? $environment->id }}
+                            <input
+                                type="date"
+                                name="start_date"
+                                class="form-control">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">
+                                Horario
+                            </label>
+                            <input
+                                type="text"
+                                name="schedule"
+                                class="form-control"
+                                placeholder="Ingrese el horario (Ej. 07:00 a 13:00)">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="offer_id" class="form-label fw-bold">
+                                Oferta
+                            </label>
+
+                            <select name="offer_id" id="offer_id" class="form-select">
+                                <option value="">Seleccione una oferta</option>
+
+                                @foreach ($offer as $offer)
+                                    <option value="{{ $offer->id }}">
+                                        Oferta #{{ $offer->id }} - {{ $offer->shift }}
                                     </option>
                                 @endforeach
                             </select>
@@ -60,7 +68,7 @@
                             </a>
 
                             <button type="submit" class="btn btn-success">
-                                Actualizar Computador
+                                Guardar Ficha
                             </button>
                         </div>
 

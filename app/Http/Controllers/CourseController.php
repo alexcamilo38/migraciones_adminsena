@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Area;
+use App\Models\Cohort;
 use App\Models\Course;
+use App\Models\Environment;
 use App\Models\Training_center;
 use Illuminate\Http\Request;
 
@@ -21,10 +23,11 @@ class CourseController extends Controller
 
     public function registro()
     {
-
-        $areas = Area::all();
+        
         $training_centers = Training_center::all();
-        return view('course.registro', compact('areas', 'training_centers'));
+        $cohorts = Cohort::all();
+        $environments = Environment::all();
+        return view('course.registro', compact('training_centers','cohorts','environments'));
     }
 
     public function dato(Request $request)
@@ -42,20 +45,18 @@ class CourseController extends Controller
     public function edit(Course $courses)
     {
         // Traemos todos los registros de las tablas foráneas
-        $areas = Area::all();
         $training_centers = Training_center::all();
+        $cohorts = Cohort::all();
+        $environments = Environment::all();
 
         //  Enviamos todo a la vista con compact
-        return view('course.edit', compact('courses', 'areas', 'training_centers'));
+        return view('course.edit', compact('courses', 'training_centers','cohorts','environments'));
     }
 
     public function update(Request $request, Course $courses)
     {
-        $courses->course_number = $request->course_number;
-        $courses->day = $request->day;
-        $courses->area_id = $request->area_id;
-        $courses->training_center_id = $request->training_center_id;
-        $courses->save();
+        //metodo mas sencillo sin nesecidad de poner todo lo que pertenece a esa tabla
+        $courses->update($request->all());
 
         return redirect()->route('course.index');
     }

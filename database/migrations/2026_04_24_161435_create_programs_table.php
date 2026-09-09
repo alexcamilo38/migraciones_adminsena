@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('type');
             $table->string('duration');
             $table->string('modality'); 
-            $table->string('image')->nullable(); 
+            $table->string('urlFoto')->nullable();
 
 
             $table->unsignedBigInteger('area_id')->nullable();

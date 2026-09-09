@@ -16,7 +16,7 @@ class Cohort extends Model
         return $this->belongsTo('App\Models\offer');
     }
 
-     public function course()
+     public function courses()
     {
         return $this->hasMany('App\Models\course');
     }

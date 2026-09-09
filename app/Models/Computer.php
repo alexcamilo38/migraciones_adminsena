@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Computer extends Model
 {
     use HasFactory;
-    public function apprentice()
+    public function apprentices()
     {
-        return $this->hasOne('App\Models\apprentice');
+        return $this->hasMany('App\Models\apprentice');
     }
 
     public function environment()
@@ -21,5 +21,6 @@ class Computer extends Model
     protected $fillable = [
         'number',
         'brand',
+        'environment_id',
     ];
 }

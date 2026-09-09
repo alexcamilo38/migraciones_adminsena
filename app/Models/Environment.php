@@ -15,7 +15,7 @@ class Environment extends Model
     }
     public function courses()
     {
-        return $this->belongsToMany('App\Models\course');
+        return $this->hasMany('App\Models\course');
     }
 
     public function computers()
@@ -27,5 +27,9 @@ class Environment extends Model
         'name',
         'location',
         'training_center_id',
+    ];
+
+    protected $guarded = [
+        'urlFoto'
     ];
 }

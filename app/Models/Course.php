@@ -9,10 +9,6 @@ class Course extends Model
 {
     use HasFactory;
 
-    public function area()
-    {
-        return $this->belongsTo('App\Models\area');
-    }
     //Relacion Uno a Muchos (Inversa) 
     public function training_center()
     {
@@ -28,9 +24,9 @@ class Course extends Model
     {
         return $this->belongsToMany('App\Models\teacher');
     }
-    public function environments()
+    public function environment()
     {
-        return $this->belongsToMany('App\Models\environment');
+        return $this->belongsTo('App\Models\environment');
     }
     public function cohort()
     {
@@ -40,8 +36,9 @@ class Course extends Model
     protected $fillable = [
         'course_number',
         'day',
-        'area_id',
         'training_center_id',
+        'cohort_id',
+        'environment_id',
 
     ];
 }

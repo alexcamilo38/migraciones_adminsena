@@ -37,12 +37,24 @@
                     </a>
 
                     <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0 mt-2">
-                        <li><a class="dropdown-item py-2" href="{{ url('/areas/list') }}">📁 Lista Áreas</a></li>
-                        <li><a class="dropdown-item py-2" href="{{ url('/trainingcenter/list') }}">🏢 Lista Centros</a></li>
-                        <li><a class="dropdown-item py-2" href="{{ url('/computer/list') }}">💻 Lista Computadores</a></li>
-                        <li><a class="dropdown-item py-2" href="{{ url('/course/list') }}">📚 Lista Cursos</a></li>
-                        <li><a class="dropdown-item py-2" href="{{ url('/teacher/list') }}">👨‍🏫 Lista Instructores</a></li>
-                        <li><a class="dropdown-item py-2" href="{{ url('/apprentice/list') }}">👨‍🎓 Lista Aprendices</a></li>
+                        <li><a class="dropdown-item py-2" href="{{ route('areas.index') }}">📁 Lista Áreas</a></li>
+                        <li><a class="dropdown-item py-2" href="{{ route('trainingcenters.index') }}">🏢 Lista
+                                Centros</a></li>
+                        <li><a class="dropdown-item py-2" href="{{ route('computer.index') }}">💻 Lista Computadores</a>
+                        </li>
+                        <li><a class="dropdown-item py-2" href="{{ route('teacher.index') }}">👨‍🏫 Lista
+                                Instructores</a></li>
+                        <li><a class="dropdown-item py-2" href="{{ route('course.index') }}">📚 Lista Cursos</a></li>
+                        <li><a class="dropdown-item py-2" href="{{ route('apprentice.index') }}">👨‍🎓 Lista
+                                Aprendices</a></li>
+                        <li><a class="dropdown-item py-2" href="{{ route('programs.index') }}">🎓 Lista Programas</a>
+                        </li>
+                        <li><a class="dropdown-item py-2" href="{{ route('environments.index') }}">🏫 Lista
+                                Ambientes</a></li>
+                        <li><a class="dropdown-item py-2" href="{{ route('announcements.index') }}">📢 Lista
+                                Anuncios</a></li>
+                        <li><a class="dropdown-item py-2" href="{{ route('offers.index') }}">🏷️ Lista Ofertas</a></li>
+                        <li><a class="dropdown-item py-2" href="{{ route('cohorts.index') }}">👥 Lista Ficha</a></li>
                     </ul>
                 </li>
 
@@ -54,7 +66,8 @@
                     <span class="input-group-text bg-white border-end-0">
                         🔍
                     </span>
-                    <input class="form-control border-start-0" type="search" placeholder="Buscar..." aria-label="Buscar">
+                    <input class="form-control border-start-0" type="search" placeholder="Buscar..."
+                        aria-label="Buscar">
                     <button class="btn btn-light text-success fw-bold border" type="submit">
                         Buscar
                     </button>
@@ -64,7 +77,8 @@
             <!-- BLOQUE DINÁMICO DE AUTENTICACIÓN (Manejado por JavaScript) -->
             <div id="auth-nav-container">
                 <!-- Estado por defecto mientras carga JS: Botón Iniciar Sesión -->
-                <a href="{{ url('/login') }}" id="btn-login-nav" class="btn btn-outline-light fw-bold px-3 ms-lg-2 my-2 my-lg-0">
+                <a href="{{ url('/login') }}" id="btn-login-nav"
+                    class="btn btn-outline-light fw-bold px-3 ms-lg-2 my-2 my-lg-0">
                     Iniciar Sesión
                 </a>
             </div>

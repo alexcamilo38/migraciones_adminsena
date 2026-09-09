@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('content');
             $table->date('publish_date');
+            $table->string('urlFoto')->nullable();
             
             $table->unsignedBigInteger('training_center_id')->nullable();
 
