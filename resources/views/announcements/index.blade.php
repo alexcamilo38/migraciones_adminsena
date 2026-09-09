@@ -1,97 +1,110 @@
 @extends('layouts.app')
 
 @section('content')
+    <div class="container py-4">
 
-<div class="py-4">
-    <div class="container-fluid px-4">
-        
-        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 gap-3">
-            <div>
-                <h2 class="fw-bold text-dark mb-1">Listado de Anuncios</h2>
-                <p class="text-muted small mb-0">Visualice, edite o elimine los anuncios registrados.</p>
-            </div>
-            <a href="{{ route('announcements.create') }}" class="btn text-white fw-bold px-4 py-2 shadow-sm d-inline-flex align-items-center gap-2" style="background-color: #39A900;">
-                Nuevo Anuncio
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1 class="fw-bold text-dark">Lista de Anuncios</h1>
+
+            <a href="{{ route('announcements.create') }}" class="btn btn-success shadow-sm">
+                <i class="bi bi-plus-circle"></i> Nuevo Anuncio
             </a>
         </div>
 
-        <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
-            <div class="card-body p-0">
+        <div class="card shadow-lg border-0 rounded-4">
+
+            <div class="card-header text-white encabezado-tabla" style="background-color: #25c72f;">
+                <h5 class="mb-0">Anuncios Registrados</h5>
+            </div>
+
+            <div class="card-body">
+
                 <div class="table-responsive">
-                    
-                    <table id="idAnnouncement" class="table table-hover align-middle mb-0" style="width:100%">
-                        <thead class="table-dark" style="background-color: #212529;">
+                    <table id="idAnnouncement" class="table table-hover align-middle mb-0">
+
+                        <thead class="table-light">
                             <tr>
-                                <th class="ps-4 py-3">ID</th>
-                                <th class="py-3">Título</th>   
-                                <th class="py-3">Fecha de Publicación</th>
-                                <th class="py-3">Contenido</th>
-                                <th class="py-3">Imagen</th>
-                                <th class="py-3">Centro de Formación</th>
-                                <th class="text-center py-3">Acciones de Gestión</th>
+                                <th>ID</th>
+                                <th>Título</th>
+                                <th>Contenido</th>
+                                <th>Fecha de Publicación</th>
+                                <th>Centro de Formación</th>
+                                <th>Imagen</th>
+                                <th class="text-center">Acciones</th>
                             </tr>
                         </thead>
-                        
+
                         <tbody>
+
                             @foreach ($announcements as $announcement)
+
                                 <tr>
-                                    <td class="ps-4 fw-bold text-secondary">#{{ $announcement->id }}</td>
-                                    <td class="fw-medium text-dark">{{ $announcement->title }}</td>
-                                    <td><span class="badge bg-secondary">{{ $announcement->publish_date }}</span></td>
+
+                                    <td>{{ $announcement->id }}</td>
+
+                                    <td class="fw-semibold">
+                                        {{ $announcement->title }}
+                                    </td>
+
                                     <td class="small text-muted" style="max-width: 250px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
                                         {{ $announcement->content }}
                                     </td>
+
+                                    <!-- Campo Fecha de Publicación Resaltado -->
                                     <td>
-                                        <img
-                                            src="{{ asset('storage/images/' . $announcement->urlFoto) }}"
-                                            alt="Imagen del anuncio"
-                                            width="60"
-                                            height="60"
-                                            style="object-fit: cover; border-radius: 5px;"
-                                        >
+                                        <span class="badge bg-light text-dark border shadow-sm px-2 py-1 fs-6 fw-normal">
+                                            <i class="bi bi-calendar-event text-success me-1"></i>{{ $announcement->publish_date }}
+                                        </span>
                                     </td>
-                                     <td class="text-secondary fw-medium">{{ $announcement->training_center->name ?? ($announcement->training_center->name ?? 'N/A') }}</td>
-                                    
+
+                                    <td>{{ $announcement->training_center?->name ?? 'N/A' }}</td>
+
+                                    <td>
+                                        @if($announcement->urlFoto)
+                                            <img src="{{ asset('storage/images/' . $announcement->urlFoto) }}"
+                                                 alt="Imagen del anuncio"
+                                                 width="50"
+                                                 height="50"
+                                                 style="object-fit: cover; border-radius: 5px;">
+                                        @else
+                                            <span class="text-muted small">Sin foto</span>
+                                        @endif
+                                    </td>
+
                                     <td class="text-center">
-                                        <div class="d-flex justify-content-center align-items-center gap-2">
-                                            
-                                            <a href="{{ route('announcements.show', $announcement->id) }}" 
-                                               class="btn btn-sm btn-light border fw-medium d-inline-flex justify-content-center align-items-center" 
-                                               style="width: 80px; height: 32px;">
-                                                Ver
-                                            </a>
-                                            
-                                            <a href="{{ route('announcements.edit', $announcement->id) }}" 
-                                               class="btn btn-sm btn-outline-dark fw-medium d-inline-flex justify-content-center align-items-center" 
-                                               style="width: 80px; height: 32px;">
-                                                Editar
-                                            </a>
-                                            
-                                            <form action="{{ route('announcements.destroy', $announcement->id) }}" 
-                                                  method="POST" 
-                                                  class="d-inline-flex m-0" 
-                                                  style="width: 80px;"
-                                                  onsubmit="return confirm('¿Está completamente seguro de eliminar este anuncio?')">
-                                                @csrf
-                                                @method('delete')
-                                                <button type="submit" 
-                                                        class="btn btn-sm btn-danger fw-medium w-100 d-inline-flex justify-content-center align-items-center"
-                                                        style="height: 32px;">
-                                                    Eliminar
-                                                </button>
-                                            </form>
-                                            
-                                        </div>
+
+                                        <a href="{{ route('announcements.show', $announcement->id) }}" class="btn btn-info btn-sm me-1 text-white">
+                                            Mostrar
+                                        </a>
+
+                                        <a href="{{ route('announcements.edit', $announcement->id) }}" class="btn btn-warning btn-sm me-1 text-white">
+                                            Editar
+                                        </a>
+
+                                        <form action="{{ route('announcements.destroy', $announcement->id) }}" method="POST" class="d-inline" onsubmit="return confirm('¿Está seguro de eliminar este anuncio?')">
+                                            @csrf
+                                            @method('delete')
+
+                                            <button type="submit" class="btn btn-danger btn-sm">
+                                                Eliminar
+                                            </button>
+
+                                        </form>
+
                                     </td>
+
                                 </tr>
+
                             @endforeach
+
                         </tbody>
+
                     </table>
-                    
                 </div>
+
             </div>
+
         </div>
 
     </div>
-</div>
 @endsection

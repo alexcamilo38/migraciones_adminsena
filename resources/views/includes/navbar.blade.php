@@ -2,15 +2,22 @@
     <div class="container-fluid px-4">
 
         <!-- Marca / Logo -->
-        <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
-            <span class="bg-white rounded p-1 me-2 d-inline-flex align-items-center justify-content-center">
-                <img src="https://pautonoticias.com/sites/default/files/Article/sena-colombia-logo-green39a900png-20250120.png"
-                    alt="Logo SENA" width="40" height="40" class="img-fluid">
-            </span>
-            <span class="text-white fw-bold">
-                Admin SENA
-            </span>
-        </a>
+        <div class="navbar-brand d-flex align-items-center">
+            <!-- Clic en la imagen redirige al Inicio (Home) -->
+            <a href="{{ url('/') }}" class="me-2 text-decoration-none">
+                <span class="bg-white rounded p-1 d-inline-flex align-items-center justify-content-center">
+                    <img src="https://pautonoticias.com/sites/default/files/Article/sena-colombia-logo-green39a900png-20250120.png"
+                        alt="Logo SENA" width="40" height="40" class="img-fluid">
+                </span>
+            </a>
+
+            <!-- Clic en el texto redirige al Panel Admin -->
+            <a href="{{ url('/admin') }}" class="text-decoration-none">
+                <span class="text-white fw-bold">
+                    Admin SENA
+                </span>
+            </a>
+        </div>
 
         <!-- Botón Toggle para Móviles -->
         <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"

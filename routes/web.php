@@ -45,6 +45,10 @@ Route::get('/admin', function () {
 Route::get('/profile', function () {
      return view('profile.profile');
 });
+
+Route::get('/reportes/inscritos', function () { return view('reportes.inscritos');})->name('reportes.inscritos');
+Route::get('/convocatorias/config', function () {return view('convocatorias.config');})->name('convocatorias.config');  
+
 Route::get('/programas', [ProgramaController::class, 'index'])->name('programas.index');
 Route::get('/programas/{id}', [ProgramaController::class, 'show'])->name('programas.show');
 

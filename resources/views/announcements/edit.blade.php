@@ -30,7 +30,18 @@
                         placeholder="Ingrese el título del anuncio">
                 </div>
 
-                
+                <div class="mb-3">
+                    <label for="content" class="form-label fw-bold">
+                        Contenido
+                    </label>
+
+                    <textarea
+                        class="form-control"
+                        id="content"
+                        name="content"
+                        rows="4"
+                        placeholder="Ingrese el contenido del anuncio">{{ old('content', $announcements->content) }}</textarea>
+                </div>
 
                 <div class="mb-3">
                     <label for="publish_date" class="form-label fw-bold">
@@ -45,18 +56,6 @@
                         value="{{ old('publish_date', $announcements->publish_date) }}">
                 </div>
 
-                <div class="mb-3">
-                    <label for="content" class="form-label fw-bold">
-                        Contenido
-                    </label>
-
-                    <textarea
-                        class="form-control"
-                        id="content"
-                        name="content"
-                        rows="4"
-                        placeholder="Ingrese el contenido del anuncio">{{ old('content', $announcements->content) }}</textarea>
-                </div>
 
                 <div class="mb-3">
                     <label for="training_center_id" class="form-label fw-bold">

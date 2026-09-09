@@ -29,10 +29,10 @@
                     </div>
                 </div>
 
-                <div class="col-md-6 mb-3">
-                    <label class="fw-bold">Área</label>
-                    <div class="form-control">
-                        {{ $program->area->name ?? ($program['area']['name'] ?? 'N/A') }}
+                <div class="col-md-12 mb-3">
+                    <label class="fw-bold">Descripción</label>
+                    <div class="form-control" style="height: auto; min-height: 80px;">
+                        {{ $program['description'] }}
                     </div>
                 </div>
 
@@ -55,12 +55,12 @@
                     <div class="form-control">
                         {{ $program['modality'] }}
                     </div>
-                </div>
+                </div>    
 
-                <div class="col-md-12 mb-3">
-                    <label class="fw-bold">Descripción</label>
-                    <div class="form-control" style="height: auto; min-height: 80px;">
-                        {{ $program['description'] }}
+                <div class="col-md-6 mb-3">
+                    <label class="fw-bold">Área</label>
+                    <div class="form-control">
+                        {{ $program->area->name ?? ($program['area']['name'] ?? 'N/A') }}
                     </div>
                 </div>
 

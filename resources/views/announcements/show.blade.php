@@ -29,10 +29,10 @@
                     </div>
                 </div>
 
-                <div class="col-md-6 mb-3">
-                    <label class="fw-bold">Centro de Formación</label>
-                    <div class="form-control">
-                        {{ $announcements->training_center->name ?? ($announcements['training_center']['name'] ?? 'N/A') }}
+                <div class="col-md-12 mb-3">
+                    <label class="fw-bold">Contenido</label>
+                    <div class="form-control" style="height: auto; min-height: 80px;">
+                        {{ $announcements['content'] }}
                     </div>
                 </div>
 
@@ -42,11 +42,11 @@
                         {{ \Carbon\Carbon::parse($announcements['publish_date'])->format('d/m/Y') }}
                     </div>
                 </div>
-
-                <div class="col-md-12 mb-3">
-                    <label class="fw-bold">Contenido</label>
-                    <div class="form-control" style="height: auto; min-height: 80px;">
-                        {{ $announcements['content'] }}
+                
+                <div class="col-md-6 mb-3">
+                    <label class="fw-bold">Centro de Formación</label>
+                    <div class="form-control">
+                        {{ $announcements->training_center->name ?? ($announcements['training_center']['name'] ?? 'N/A') }}
                     </div>
                 </div>
 

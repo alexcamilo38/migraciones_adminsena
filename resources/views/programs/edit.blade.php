@@ -31,18 +31,16 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="area_id" class="form-label fw-bold">
-                        Área
+                    <label for="description" class="form-label fw-bold">
+                        Descripción
                     </label>
 
-                    <select name="area_id" id="area_id" class="form-select">
-                        <option value="">Seleccione un área</option>
-                        @foreach ($areas as $area)
-                            <option value="{{ $area->id }}" {{ old('area_id', $program->area_id) == $area->id ? 'selected' : '' }}>
-                                {{ $area->name }}
-                            </option>
-                        @endforeach
-                    </select>
+                    <textarea
+                        class="form-control"
+                        id="description"
+                        name="description"
+                        rows="3"
+                        placeholder="Ingrese la descripción del programa">{{ old('description', $program->description) }}</textarea>
                 </div>
 
                 <div class="mb-3">
@@ -86,17 +84,21 @@
                     </select>
                 </div>
 
+                
+
                 <div class="mb-3">
-                    <label for="description" class="form-label fw-bold">
-                        Descripción
+                    <label for="area_id" class="form-label fw-bold">
+                        Área
                     </label>
 
-                    <textarea
-                        class="form-control"
-                        id="description"
-                        name="description"
-                        rows="3"
-                        placeholder="Ingrese la descripción del programa">{{ old('description', $program->description) }}</textarea>
+                    <select name="area_id" id="area_id" class="form-select">
+                        <option value="">Seleccione un área</option>
+                        @foreach ($areas as $area)
+                            <option value="{{ $area->id }}" {{ old('area_id', $program->area_id) == $area->id ? 'selected' : '' }}>
+                                {{ $area->name }}
+                            </option>
+                        @endforeach
+                    </select>
                 </div>
 
                 <!-- Muestra la imagen actual y permite subir una nueva -->
