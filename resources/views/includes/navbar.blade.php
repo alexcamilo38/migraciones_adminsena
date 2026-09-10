@@ -1,9 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-dark shadow" style="background-color: #25c72f;">
     <div class="container-fluid px-4">
 
-        <!-- Marca / Logo -->
+        <!-- LOGO Y NOMBRE -->
         <div class="navbar-brand d-flex align-items-center">
-            <!-- Clic en la imagen redirige al Inicio (Home) -->
             <a href="{{ url('/') }}" class="me-2 text-decoration-none">
                 <span class="bg-white rounded p-1 d-inline-flex align-items-center justify-content-center">
                     <img src="https://pautonoticias.com/sites/default/files/Article/sena-colombia-logo-green39a900png-20250120.png"
@@ -11,141 +10,128 @@
                 </span>
             </a>
 
-            <!-- Clic en el texto redirige al Panel Admin -->
-            <a href="{{ url('/admin') }}" class="text-decoration-none">
-                <span class="text-white fw-bold">
-                    Admin SENA
-                </span>
+            <a href="{{ url('/') }}" class="text-decoration-none">
+                <span class="text-white fw-bold">Admin SENA</span>
             </a>
         </div>
 
-        <!-- Botón Toggle para Móviles -->
+        <!-- BOTÓN MÓVIL -->
         <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
             aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <!-- Contenido Colapsable -->
+        <!-- CONTENIDO -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-            <!-- Navegación Izquierda -->
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 align-items-lg-center gap-2 ms-lg-3">
-
                 <li class="nav-item">
                     <a class="nav-link text-white fw-semibold" href="{{ url('/about') }}">Quiénes Somos</a>
                 </li>
 
-                <!-- Menú Desplegable de Administración -->
-                <li class="nav-item dropdown">
+                <!-- MENÚ ADMINISTRACIÓN (Controlado por servidor o visible si hay sesión) -->
+                <li class="nav-item dropdown d-none" id="adminDropdownNav">
                     <a class="btn btn-light dropdown-toggle text-dark fw-medium px-3" href="#" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         Administración
                     </a>
-
-                    <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0 mt-2">
+                    <ul class="dropdown-menu shadow-sm border-0 mt-2">
                         <li><a class="dropdown-item py-2" href="{{ route('areas.index') }}">📁 Lista Áreas</a></li>
-                        <li><a class="dropdown-item py-2" href="{{ route('trainingcenters.index') }}">🏢 Lista
-                                Centros</a></li>
-                        <li><a class="dropdown-item py-2" href="{{ route('computer.index') }}">💻 Lista Computadores</a>
-                        </li>
-                        <li><a class="dropdown-item py-2" href="{{ route('teacher.index') }}">👨‍🏫 Lista
-                                Instructores</a></li>
+                        <li><a class="dropdown-item py-2" href="{{ route('trainingcenters.index') }}">🏢 Lista Centros</a></li>
+                        <li><a class="dropdown-item py-2" href="{{ route('computer.index') }}">💻 Lista Computadores</a></li>
+                        <li><a class="dropdown-item py-2" href="{{ route('teacher.index') }}">👨‍🏫 Lista Instructores</a></li>
                         <li><a class="dropdown-item py-2" href="{{ route('course.index') }}">📚 Lista Cursos</a></li>
-                        <li><a class="dropdown-item py-2" href="{{ route('apprentice.index') }}">👨‍🎓 Lista
-                                Aprendices</a></li>
-                        <li><a class="dropdown-item py-2" href="{{ route('programs.index') }}">🎓 Lista Programas</a>
-                        </li>
-                        <li><a class="dropdown-item py-2" href="{{ route('environments.index') }}">🏫 Lista
-                                Ambientes</a></li>
-                        <li><a class="dropdown-item py-2" href="{{ route('announcements.index') }}">📢 Lista
-                                Anuncios</a></li>
+                        <li><a class="dropdown-item py-2" href="{{ route('apprentice.index') }}">👨‍🎓 Lista Aprendices</a></li>
+                        <li><a class="dropdown-item py-2" href="{{ route('programs.index') }}">🎓 Lista Programas</a></li>
+                        <li><a class="dropdown-item py-2" href="{{ route('environments.index') }}">🏫 Lista Ambientes</a></li>
+                        <li><a class="dropdown-item py-2" href="{{ route('announcements.index') }}">📢 Lista Anuncios</a></li>
                         <li><a class="dropdown-item py-2" href="{{ route('offers.index') }}">🏷️ Lista Ofertas</a></li>
                         <li><a class="dropdown-item py-2" href="{{ route('cohorts.index') }}">👥 Lista Ficha</a></li>
                     </ul>
                 </li>
-
             </ul>
 
-            <!-- Buscador -->
-            <form class="d-flex align-items-center my-2 my-lg-0 me-lg-4" role="search">
+            <!-- BUSCADOR -->
+            <form action="{{ route('apprentice.index') }}" method="GET" class="d-flex align-items-center my-2 my-lg-0 me-lg-4" role="search">
                 <div class="input-group">
-                    <span class="input-group-text bg-white border-end-0">
-                        🔍
-                    </span>
-                    <input class="form-control border-start-0" type="search" placeholder="Buscar..."
-                        aria-label="Buscar">
-                    <button class="btn btn-light text-success fw-bold border" type="submit">
-                        Buscar
-                    </button>
+                    <span class="input-group-text bg-white border-end-0">🔍</span>
+                    <input class="form-control border-start-0" type="search" name="search" placeholder="Buscar..." aria-label="Buscar" value="{{ request('search') }}">
+                    <button class="btn btn-light text-success fw-bold border" type="submit">Buscar</button>
                 </div>
             </form>
 
-            <!-- BLOQUE DINÁMICO DE AUTENTICACIÓN (Manejado por JavaScript) -->
-            <div id="auth-nav-container">
-                <!-- Estado por defecto mientras carga JS: Botón Iniciar Sesión -->
-                <a href="{{ url('/login') }}" id="btn-login-nav"
-                    class="btn btn-outline-light fw-bold px-3 ms-lg-2 my-2 my-lg-0">
-                    Iniciar Sesión
-                </a>
-            </div>
+            <!-- PERFIL / INICIAR SESIÓN (Manejado por JS leyendo localStorage) -->
+            <div id="auth-nav-container"></div>
 
         </div>
     </div>
 </nav>
 
-<!-- Script para Mantener la Sesión Abierta Dinámicamente -->
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Si estamos en la ruta /admin, guardamos en el navegador que la sesión está activa
-        if (window.location.pathname.includes('/admin')) {
-            localStorage.setItem('isLoggedIn', 'true');
-        }
+        checkAuthStatus();
+    });
 
-        const container = document.getElementById('auth-nav-container');
-        const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    function checkAuthStatus() {
+        const authContainer = document.getElementById('auth-nav-container');
+        const adminDropdown = document.getElementById('adminDropdownNav');
 
-        if (isLoggedIn) {
-            // Muestra el Menú con el Ícono de Perfil
-            container.innerHTML = `
-                <div class="nav-item dropdown ms-lg-2 my-2 my-lg-0">
-                    <a class="nav-link dropdown-toggle text-white d-flex align-items-center gap-2" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <div class="rounded-circle bg-white text-success fw-bold d-flex align-items-center justify-content-center shadow-sm" 
-                             style="width: 38px; height: 38px; font-size: 1.1rem; border: 2px solid rgba(255, 255, 255, 0.8);">
+        const userSession = JSON.parse(localStorage.getItem('user_session'));
+        const userRole = localStorage.getItem('user_role') || (userSession ? userSession.role : null);
+
+        if (userSession) {
+            // Mostrar Administración si es admin
+            if (adminDropdown && (userRole === 'admin' || userRole === 'administrador')) {
+                adminDropdown.classList.remove('d-none');
+            }
+
+            const name = userSession.name || 'Usuario';
+            const email = userSession.email || '';
+
+            // Mostrar el icono del perfil
+            authContainer.innerHTML = `
+                <div class="dropdown ms-lg-2 my-2 my-lg-0">
+                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        <div class="rounded-circle bg-white text-success fw-bold d-flex align-items-center justify-content-center shadow-sm me-2" style="width: 38px; height: 38px; border: 2px solid rgba(255,255,255,.8);">
                             👤
                         </div>
-                        <span class="fw-bold text-white d-none d-sm-inline">
-                            Administrador
-                        </span>
+                        <span class="fw-bold text-white d-none d-md-inline">${name}</span>
                     </a>
-                    
-                    <ul class="dropdown-menu dropdown-menu-end border-0 shadow-lg mt-2" aria-labelledby="userDropdown" style="border-radius: 12px;">
+                    <ul class="dropdown-menu dropdown-menu-end border-0 shadow-lg mt-2" aria-labelledby="profileDropdown" style="border-radius: 12px;">
                         <li>
-                            <div class="dropdown-header text-muted fw-semibold">
-                                admin@sena.edu.co
+                            <div class="px-3 py-2 border-bottom">
+                                <p class="fw-bold mb-0 text-dark small">${name}</p>
+                                <small class="text-muted">${email}</small>
                             </div>
                         </li>
-                        <li><hr class="dropdown-divider"></li>
                         <li>
-                            <a class="dropdown-item py-2 d-flex align-items-center gap-2" href="{{ url('/profile') }}">
-                                👤 Mi Perfil
-                            </a>
+                            <a class="dropdown-item py-2" href="{{ url('/profile') }}">👤 Mi Perfil</a>
                         </li>
                         <li>
-                            <a class="dropdown-item py-2 d-flex align-items-center gap-2 text-danger fw-semibold" href="#" id="btn-logout-nav">
-                                ➔ Cerrar Sesión
-                            </a>
+                            <button onclick="logout()" class="dropdown-item text-danger fw-bold py-2 w-100 text-start">
+                                <i class="bi bi-box-arrow-right me-2"></i> Cerrar Sesión
+                            </button>
                         </li>
                     </ul>
                 </div>
             `;
+        } else {
+            if (adminDropdown) adminDropdown.classList.add('d-none');
 
-            // Evento al dar clic en "Cerrar Sesión"
-            document.getElementById('btn-logout-nav').addEventListener('click', function(e) {
-                e.preventDefault();
-                localStorage.removeItem('isLoggedIn'); // Elimina la sesión guardada
-                window.location.href = "{{ url('/login') }}"; // Redirige al login
-            });
+            authContainer.innerHTML = `
+                <a href="{{ url('/login') }}" class="btn btn-light text-success fw-bold px-3 rounded-3 shadow-sm d-flex align-items-center gap-1">
+                    <i class="bi bi-person-circle"></i> Iniciar Sesión
+                </a>
+            `;
         }
-    });
+    }
+
+    function logout() {
+        localStorage.removeItem('user_session');
+        localStorage.removeItem('user_role');
+        localStorage.removeItem('isLoggedIn');
+        checkAuthStatus();
+        window.location.href = "{{ url('/login') }}";
+    }
 </script>

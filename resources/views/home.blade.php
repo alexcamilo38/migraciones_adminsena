@@ -25,7 +25,7 @@
                     <div class="carousel-caption">
                         <h1>ADMIN SENA</h1>
                         <p>Bienvenido al sistema de gestión académica</p>
-                        <a href="/admin" class="btn btn-success btn-lg px-5">Comenzar</a>
+                        <a href="/login" class="btn btn-success btn-lg px-5">Comenzar</a>
                     </div>
                 </div>
 
