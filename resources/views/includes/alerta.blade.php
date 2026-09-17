@@ -15,7 +15,7 @@
                 Próximo Cierre de Convocatoria
             </h6>
             <p class="small mb-0 text-white-50" style="font-size: 0.85rem;">
-                El periodo de preinscripción para programas de la **III Oferta** finaliza el <strong class="text-white">30 de agosto</strong>.
+                El periodo de preinscripción para programas de la **III Oferta** finaliza el <strong class="text-white">30 de Septiembre</strong>.
             </p>
         </div>
 

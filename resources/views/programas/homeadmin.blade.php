@@ -91,7 +91,7 @@
                 <div class="card border-0 shadow-sm rounded-3 p-4 bg-white h-100">
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <h5 class="fw-bold text-dark mb-0">Programas Gestionados</h5>
-                        <a href="{{ route('programas.index') }}"
+                        <a href="{{ route('programs.index') }}"
                             class="text-success text-decoration-none small fw-semibold">Ver todos →</a>
                     </div>
 
@@ -149,7 +149,7 @@
                     <h5 class="fw-bold text-dark mb-3">Acciones de Gestión</h5>
 
                     <div class="d-grid gap-2">
-                        <a href="{{ route('programs.index') }}"
+                        <a href="{{ route('offers.index') }}"
                             class="btn btn-outline-success text-start p-3 rounded-3 fw-medium">
                             🌐 <strong>Vista Pública de Ofertas</strong>
                             <span class="d-block small text-muted">Revisar cómo los usuarios ven los programas</span>

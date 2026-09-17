@@ -3,9 +3,9 @@
 @section('content')
 <div class="container my-5">
 
-    <a href="{{ url('/') }}"  class="btn btn-outline-secondary rounded-pill px-4 py-2 text-decoration-none">
-    ← inicio
-</a>
+    <a href="{{ url()->previous() }}" class="btn btn-outline-secondary rounded-pill px-4 py-2 text-decoration-none">
+        ← Volver
+    </a>
     
     {{-- Encabezado principal --}}
     <div class="text-center mb-5">

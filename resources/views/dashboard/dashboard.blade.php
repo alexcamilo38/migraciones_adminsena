@@ -53,7 +53,7 @@
 
         <!-- Programas -->
         <div class="col-md-6 col-lg-4">
-            <a href="{{ route('programs.index') }}" class="text-decoration-none">
+            <a href="{{ route('programas.index') }}" class="text-decoration-none">
                 <div class="card h-100 border-0 shadow-sm rounded-4 hover-card">
                     <div class="card-body d-flex align-items-center gap-3 p-4">
                         <div class="rounded-circle d-flex align-items-center justify-content-center"
