@@ -23,6 +23,7 @@ class Cohort extends Model
      protected $fillable = [
         'code',
         'start_date',
+        'end_date',
         'schedule',
         'offer_id',
     ];

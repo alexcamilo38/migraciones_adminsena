@@ -39,6 +39,21 @@
                                 placeholder="Ingrese la marca">
                         </div>
 
+                        <!-- CAMPO DE ESTADO CON VALOR ACTUAL -->
+                        <div class="mb-3">
+                            <label for="state" class="form-label fw-bold">
+                                Estado del Equipo
+                            </label>
+                            <select name="state" id="state" class="form-select" required>
+                                <option value="activo" {{ old('state', $computer->state) == 'activo' ? 'selected' : '' }}>
+                                    🟢 Activo
+                                </option>
+                                <option value="mantenimiento" {{ old('state', $computer->state) == 'mantenimiento' ? 'selected' : '' }}>
+                                    🟡 En Mantenimiento
+                                </option>
+                            </select>
+                        </div>
+
                         <div class="mb-3">
                             <label for="environment_id" class="form-label fw-bold">
                                 Ambiente de Formación

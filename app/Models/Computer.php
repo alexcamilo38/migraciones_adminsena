@@ -21,6 +21,7 @@ class Computer extends Model
     protected $fillable = [
         'number',
         'brand',
+        'state',
         'environment_id',
     ];
 }

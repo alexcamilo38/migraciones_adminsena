@@ -3,7 +3,7 @@
 @section('content')
 <div class="container mt-5 mb-5">
 
-    <div class="card shadow-lg border-0">
+    <div class="card shadow-lg border-0 rounded-4">
 
         <div class="card-header bg-success text-white">
             <h3 class="mb-0">
@@ -31,19 +31,21 @@
 
             </div>
 
+            <!-- FECHAS ORGANIZADAS EN UNA MISMA FILA -->
             <div class="row">
 
                 <div class="col-md-6 mb-3">
                     <label class="fw-bold">Fecha de Inicio</label>
                     <div class="form-control">
-                        {{ \Carbon\Carbon::parse($cohorts->start_date)->format('d/m/Y') }}
+                        {{ $cohorts->start_date ? \Carbon\Carbon::parse($cohorts->start_date)->format('d/m/Y') : 'N/A' }}
                     </div>
                 </div>
 
+                <!-- CAMPO AGREGADO: Fecha de Fin -->
                 <div class="col-md-6 mb-3">
-                    <label class="fw-bold">Horario</label>
+                    <label class="fw-bold">Fecha de Fin</label>
                     <div class="form-control">
-                        {{ $cohorts->schedule }}
+                        {{ $cohorts->end_date ? \Carbon\Carbon::parse($cohorts->end_date)->format('d/m/Y') : 'N/A' }}
                     </div>
                 </div>
 
@@ -52,9 +54,16 @@
             <div class="row">
 
                 <div class="col-md-6 mb-3">
+                    <label class="fw-bold">Horario</label>
+                    <div class="form-control">
+                        {{ $cohorts->schedule ?? 'N/A' }}
+                    </div>
+                </div>
+
+                <div class="col-md-6 mb-3">
                     <label class="fw-bold">Oferta Asociada</label>
                     <div class="form-control">
-                        Oferta #{{ $cohorts->offer?->id }} - {{ $cohorts->offer?->shift }}
+                        {{ $cohorts->offer ? 'Oferta #' . $cohorts->offer->id . ' - ' . $cohorts->offer->shift : 'Sin oferta asignada' }}
                     </div>
                 </div>
 
@@ -80,8 +89,14 @@
 
             </div>
 
-            <div class="mt-4 text-end">
-                <a href="{{ url()->previous() }}" class="btn btn-secondary">Volver</a>
+            <div class="mt-4 d-flex justify-content-between">
+                <a href="{{ route('cohorts.index') }}" class="btn btn-secondary">
+                    <i class="bi bi-arrow-left"></i> Volver a la lista
+                </a>
+
+                <a href="{{ route('cohorts.edit', $cohorts->id) }}" class="btn btn-warning">
+                    Editar Ficha
+                </a>
             </div>
 
         </div>

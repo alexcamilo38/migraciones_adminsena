@@ -12,6 +12,8 @@ use App\Http\Controllers\ProgramaController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\TrainingCenterController;
+use App\Models\Announcement;
+use App\Models\Program;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,7 +48,12 @@ Route::get('/profile', function () {
      return view('profile.profile');
 });
 
-Route::get('/student', function () {return view('dashboard.dashboard');})->name('dashboard');
+Route::get('/student', function () {
+    
+    $programs = Program::orderBy('id', 'desc')->get();
+    $announcements = Announcement::orderBy('id', 'desc')->get();
+    
+    return view('dashboard.dashboard', compact('programs', 'announcements'));})->name('dashboard');
 
 Route::get('/reportes/inscritos', function () { return view('reportes.inscritos');})->name('reportes.inscritos');
 Route::get('/convocatorias/config', function () {return view('convocatorias.config');})->name('convocatorias.config');  

@@ -14,6 +14,7 @@
                     <form action="{{ route('cohorts.admin') }}" method="POST" enctype="multipart/form-data">
                         @csrf
 
+                        <!-- Código de la Ficha -->
                         <div class="mb-3">
                             <label class="form-label fw-bold">
                                 Código de la Ficha
@@ -22,19 +23,40 @@
                                 type="text"
                                 name="code"
                                 class="form-control"
-                                placeholder="Ingrese el código o número de la ficha">
+                                value="{{ old('code') }}"
+                                placeholder="Ingrese el código o número de la ficha"
+                                required>
                         </div>
 
-                        <div class="mb-3">
-                            <label class="form-label fw-bold">
-                                Fecha de Inicio
-                            </label>
-                            <input
-                                type="date"
-                                name="start_date"
-                                class="form-control">
+                        <!-- Fechas Inicio / Fin (Agrupadas en 2 columnas) -->
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-bold">
+                                    Fecha de Inicio
+                                </label>
+                                <input
+                                    type="date"
+                                    name="start_date"
+                                    class="form-control"
+                                    value="{{ old('start_date') }}"
+                                    required>
+                            </div>
+
+                            <!-- NUEVO CAMPO: Fecha de Fin -->
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-bold">
+                                    Fecha de Fin
+                                </label>
+                                <input
+                                    type="date"
+                                    name="end_date"
+                                    class="form-control"
+                                    value="{{ old('end_date') }}"
+                                    required>
+                            </div>
                         </div>
 
+                        <!-- Horario -->
                         <div class="mb-3">
                             <label class="form-label fw-bold">
                                 Horario
@@ -43,25 +65,28 @@
                                 type="text"
                                 name="schedule"
                                 class="form-control"
+                                value="{{ old('schedule') }}"
                                 placeholder="Ingrese el horario (Ej. 07:00 a 13:00)">
                         </div>
 
+                        <!-- Oferta -->
                         <div class="mb-3">
                             <label for="offer_id" class="form-label fw-bold">
                                 Oferta
                             </label>
 
-                            <select name="offer_id" id="offer_id" class="form-select">
+                            <select name="offer_id" id="offer_id" class="form-select" required>
                                 <option value="">Seleccione una oferta</option>
 
-                                @foreach ($offer as $offer)
-                                    <option value="{{ $offer->id }}">
-                                        Oferta #{{ $offer->id }} - {{ $offer->shift }}
+                                @foreach ($offer as $item)
+                                    <option value="{{ $item->id }}" {{ old('offer_id') == $item->id ? 'selected' : '' }}>
+                                        Oferta #{{ $item->id }} - {{ $item->shift }}
                                     </option>
                                 @endforeach
                             </select>
                         </div>
 
+                        <!-- Botones de Acción -->
                         <div class="d-flex justify-content-between">
                             <a href="{{ url()->previous() }}" class="btn btn-secondary">
                                 Cancelar

@@ -7,7 +7,7 @@
 
             <div class="card shadow border-0 rounded-4">
                 <div class="card-header bg-success text-white">
-                    <h4 class="mb-0">Registrar Computador</h4>
+                    <h4 class="mb-0">Registrar Equipo</h4>
                 </div>
 
                 <div class="card-body">
@@ -32,6 +32,19 @@
                                 class="form-control"
                                 value="{{ old('brand') }}"
                                 placeholder="Ingrese la marca del computador">
+                        </div>
+
+                        <!-- NUEVO CAMPO: Estado del Equipo -->
+                        <div class="mb-3">
+                            <label for="state" class="form-label fw-bold">Estado del Equipo</label>
+                            <select name="state" id="state" class="form-select" required>
+                                <option value="activo" {{ old('state') == 'activo' ? 'selected' : '' }}>
+                                    🟢 Activo
+                                </option>
+                                <option value="mantenimiento" {{ old('state') == 'mantenimiento' ? 'selected' : '' }}>
+                                    🟡 En Mantenimiento
+                                </option>
+                            </select>
                         </div>
 
                         <div class="mb-3">

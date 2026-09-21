@@ -26,6 +26,7 @@
                             <th>Id</th>
                             <th>Código / Ficha</th>
                             <th>Fecha de Inicio</th>
+                            <th>Fecha de Fin</th> <!-- NUEVA COLUMNA -->
                             <th>Horario</th>
                             <th>Oferta</th>
                             <th class="text-center">Acciones</th>
@@ -34,33 +35,42 @@
 
                     <tbody>
 
-                        @foreach ($cohorts as $cohort)
+                        @foreach ($cohorts as $item)
 
                             <tr>
 
-                                <td>{{ $cohort->id }}</td>
+                                <td>{{ $item->id }}</td>
 
                                 <td class="fw-semibold">
-                                    {{ $cohort->code }}
+                                    {{ $item->code }}
                                 </td>
 
-                                <td>{{ $cohort->start_date }}</td>
+                                <td>
+                                    {{ $item->start_date ? \Carbon\Carbon::parse($item->start_date)->format('d/m/Y') : 'N/A' }}
+                                </td>
 
-                                <td>{{ $cohort->schedule }}</td>
+                                <!-- MUESTRA DE FECHA DE FIN -->
+                                <td>
+                                    {{ $item->end_date ? \Carbon\Carbon::parse($item->end_date)->format('d/m/Y') : 'N/A' }}
+                                </td>
 
-                                <td>Oferta #{{ $cohort->offer?->id }} - {{ $cohort->offer?->shift }}</td>
+                                <td>{{ $item->schedule }}</td>
+
+                                <td>
+                                    {{ $item->offer ? 'Oferta #' . $item->offer->id . ' - ' . $item->offer->shift : 'Sin oferta' }}
+                                </td>
 
                                 <td class="text-center">
 
-                                    <a href="{{ route('cohorts.show', $cohort->id) }}" class="btn btn-info btn-sm me-1">
+                                    <a href="{{ route('cohorts.show', $item->id) }}" class="btn btn-info btn-sm text-white me-1">
                                         Mostrar
                                     </a>
 
-                                    <a href="{{ route('cohorts.edit', $cohort->id) }}" class="btn btn-warning btn-sm me-1">
+                                    <a href="{{ route('cohorts.edit', $item->id) }}" class="btn btn-warning btn-sm me-1">
                                         Editar
                                     </a>
 
-                                    <form action="{{ route('cohorts.destroy', $cohort->id) }}" method="POST" class="d-inline">
+                                    <form action="{{ route('cohorts.destroy', $item->id) }}" method="POST" class="d-inline" onsubmit="return confirm('¿Estás seguro de eliminar esta ficha?');">
                                         @csrf
                                         @method('delete')
 
