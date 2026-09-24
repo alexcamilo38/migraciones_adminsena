@@ -16,7 +16,7 @@ class Program extends Model
     {
          return $this->hasMany('App\Models\offer');
     }
-
+    //asignación masiva
     protected $fillable = [
         'name',
         'description',

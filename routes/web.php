@@ -94,11 +94,13 @@ Route::get('teacher/{id}', [TeacherController::class, 'show'])->name('teacher.sh
 Route::put('teacher/{teachers}', [TeacherController::class, 'update'])->name('teacher.update');
 Route::get('teacher/{teachers}/editar', [TeacherController::class, 'edit'])->name('teacher.edit');
 Route::delete('teacher/{teachers}', [TeacherController::class, 'destroy'])->name('teacher.destroy');
-
+//Obtener/traer datos.
 Route::get('course/registro', [CourseController::class, 'registro'])->name('course.registro');
 Route::get('course/list', [CourseController::class, 'index'])->name('course.index');
+//Crear nuevos registros.
 Route::post('course/admin', [CourseController::class, 'dato'])->name('course.admin');
 Route::get('course/{id}', [CourseController::class, 'show'])->name('course.show');
+//Actualizar datos
 Route::put('course/{courses}', [CourseController::class, 'update'])->name('course.update');
 Route::get('course/{courses}/editar', [CourseController::class, 'edit'])->name('course.edit');
 Route::delete('course/{courses}', [CourseController::class, 'destroy'])->name('course.destroy');
