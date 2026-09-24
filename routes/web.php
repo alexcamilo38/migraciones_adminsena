@@ -27,9 +27,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+// Carga la vista principal 'home' ordenando los anuncios de la base de datos del más reciente al más antiguo.
+Route::get('/', function () { 
+    $announcements = Announcement::orderBy('id', 'desc')->get(); 
+    return view('home', compact('announcements'));
+})->name('home');
 
 Route::get('/about', function () {
     return view('about.about');
@@ -47,7 +49,7 @@ Route::get('/admin', function () {
 Route::get('/profile', function () {
      return view('profile.profile');
 });
-
+// Carga los programas y anuncios ordenados por id descendente para mostrarlos en el panel del estudiante
 Route::get('/student', function () {
     
     $programs = Program::orderBy('id', 'desc')->get();

@@ -4,26 +4,33 @@
     <div class="container my-5">
 
         <!-- Encabezado de Bienvenida -->
+        <!-- Muestra el título del panel, el saludo de bienvenida y el botón de creación -->
         <div class="d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom">
             <div>
+                <!-- Badge identificador del módulo actual -->
                 <span
                     class="badge bg-success-subtle text-success border border-success-subtle px-3 py-1 rounded-pill fw-semibold mb-2">
                     Panel de Control
                 </span>
+                <!-- Título principal del dashboard -->
                 <h1 class="fw-bold text-dark h2 mb-1">Bienvenido, Administrador</h1>
                 <p class="text-secondary small mb-0">Gestión general del centro de formación y oferta educativa</p>
             </div>
             <div>
+                <!-- Enlace/Botón para registrar un nuevo programa de formación -->
                 <a href="{{ route('programs.create') }}" class="btn btn-success fw-medium rounded-2 px-3 py-2 shadow-sm">
                     + Nuevo Programa
                 </a>
             </div>
         </div>
 
+        {{-- Componente de alertas para mensajes de éxito, error o estado del sistema --}}
         @include('includes.alerta')
 
         <!-- Tarjetas de Métricas Rápidas -->
+        <!-- Grilla que resume los contadores y estadísticas clave del centro -->
         <div class="row g-3 mb-5">
+            <!-- Métrica: Oferta Total -->
             <div class="col-md-6 col-xl-3">
                 <div class="card border-0 shadow-sm rounded-3 p-3 bg-white">
                     <div class="d-flex align-items-center justify-content-between">
@@ -38,6 +45,7 @@
                 </div>
             </div>
 
+            <!-- Métrica: Convocatorias Activas -->
             <div class="col-md-6 col-xl-3">
                 <div class="card border-0 shadow-sm rounded-3 p-3 bg-white">
                     <div class="d-flex align-items-center justify-content-between">
@@ -53,6 +61,7 @@
                 </div>
             </div>
 
+            <!-- Métrica: Aspirantes Inscritos -->
             <div class="col-md-6 col-xl-3">
                 <div class="card border-0 shadow-sm rounded-3 p-3 bg-white">
                     <div class="d-flex align-items-center justify-content-between">
@@ -68,6 +77,7 @@
                 </div>
             </div>
 
+            <!-- Métrica: Cupos Disponibles -->
             <div class="col-md-6 col-xl-3">
                 <div class="card border-0 shadow-sm rounded-3 p-3 bg-white">
                     <div class="d-flex align-items-center justify-content-between">
@@ -87,14 +97,17 @@
         <div class="row g-4">
 
             <!-- Tabla de Programas Recientes -->
+            <!-- Contenedor con el listado detallado de los programas administrados -->
             <div class="col-lg-8">
                 <div class="card border-0 shadow-sm rounded-3 p-4 bg-white h-100">
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <h5 class="fw-bold text-dark mb-0">Programas Gestionados</h5>
+                        <!-- Enlace para ir al listado completo de programas -->
                         <a href="{{ route('programs.index') }}"
                             class="text-success text-decoration-none small fw-semibold">Ver todos →</a>
                     </div>
 
+                    <!-- Tabla de datos estructurada con respuesta responsiva -->
                     <div class="table-responsive">
                         <table class="table table-hover align-middle mb-0">
                             <thead class="table-light">
@@ -107,6 +120,7 @@
                                 </tr>
                             </thead>
                             <tbody class="small">
+                                <!-- Fila de programa: Análisis y Desarrollo de Software -->
                                 <tr>
                                     <td class="fw-bold text-dark">Análisis y Desarrollo de Software</td>
                                     <td><span class="badge bg-light text-dark border">Tecnólogo</span></td>
@@ -117,6 +131,7 @@
                                             class="btn btn-sm btn-outline-secondary rounded-pill px-3">Editar</a>
                                     </td>
                                 </tr>
+                                <!-- Fila de programa: Producción de Contenidos Digitales -->
                                 <tr>
                                     <td class="fw-bold text-dark">Producción de Contenidos Digitales</td>
                                     <td><span class="badge bg-light text-dark border">Tecnólogo</span></td>
@@ -127,6 +142,7 @@
                                             class="btn btn-sm btn-outline-secondary rounded-pill px-3">Editar</a>
                                     </td>
                                 </tr>
+                                <!-- Fila de programa: Contabilización de Operaciones -->
                                 <tr>
                                     <td class="fw-bold text-dark">Contabilización de Operaciones</td>
                                     <td><span class="badge bg-light text-dark border">Técnico</span></td>
@@ -144,23 +160,27 @@
             </div>
 
             <!-- Módulos de Accesos Rápidos -->
+            <!-- Panel lateral con accesos directos a funciones administrativas -->
             <div class="col-lg-4">
                 <div class="card border-0 shadow-sm rounded-3 p-4 bg-white h-100">
                     <h5 class="fw-bold text-dark mb-3">Acciones de Gestión</h5>
 
                     <div class="d-grid gap-2">
+                        <!-- Acceso a la vista pública de ofertas -->
                         <a href="{{ route('offers.index') }}"
                             class="btn btn-outline-success text-start p-3 rounded-3 fw-medium">
                             🌐 <strong>Vista Pública de Ofertas</strong>
                             <span class="d-block small text-muted">Revisar cómo los usuarios ven los programas</span>
                         </a>
 
+                        <!-- Acceso a reportes y exportación de datos -->
                         <a href="{{ route('reportes.inscritos') }}"
                             class="btn btn-outline-secondary text-start p-3 rounded-3 fw-medium">
                             📂 <strong>Reporte de Inscritos (Excel/PDF)</strong>
                             <span class="d-block small text-muted">Descargar base de datos de los postulados</span>
                         </a>
 
+                        <!-- Acceso a la configuración de fechas y convocatorias -->
                         <a href="{{ route('convocatorias.config') }}"
                             class="btn btn-outline-secondary text-start p-3 rounded-3 fw-medium">
                             ⚙️ <strong>Configuración de Convocatorias</strong>

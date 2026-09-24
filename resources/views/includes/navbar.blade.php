@@ -37,17 +37,17 @@
                         Administración
                     </a>
                     <ul class="dropdown-menu shadow-sm border-0 mt-2">
-                        <li><a class="dropdown-item py-2" href="{{ route('areas.index') }}">📁 Lista Áreas</a></li>
-                        <li><a class="dropdown-item py-2" href="{{ route('trainingcenters.index') }}">🏢 Lista Centros</a></li>
-                        <li><a class="dropdown-item py-2" href="{{ route('computer.index') }}">💻 Lista Computadores</a></li>
-                        <li><a class="dropdown-item py-2" href="{{ route('teacher.index') }}">👨‍🏫 Lista Instructores</a></li>
-                        <li><a class="dropdown-item py-2" href="{{ route('course.index') }}">📚 Lista Cursos</a></li>
-                        <li><a class="dropdown-item py-2" href="{{ route('apprentice.index') }}">👨‍🎓 Lista Aprendices</a></li>
-                        <li><a class="dropdown-item py-2" href="{{ route('programs.index') }}">🎓 Lista Programas</a></li>
-                        <li><a class="dropdown-item py-2" href="{{ route('environments.index') }}">🏫 Lista Ambientes</a></li>
-                        <li><a class="dropdown-item py-2" href="{{ route('announcements.index') }}">📢 Lista Anuncios</a></li>
-                        <li><a class="dropdown-item py-2" href="{{ route('offers.index') }}">🏷️ Lista Ofertas</a></li>
-                        <li><a class="dropdown-item py-2" href="{{ route('cohorts.index') }}">👥 Lista Ficha</a></li>
+                        <li><a class="dropdown-item py-2" href="{{ route('areas.index') }}">Lista Áreas</a></li>
+                        <li><a class="dropdown-item py-2" href="{{ route('trainingcenters.index') }}"> Lista Centros</a></li>
+                        <li><a class="dropdown-item py-2" href="{{ route('computer.index') }}"> Lista Computadores</a></li>
+                        <li><a class="dropdown-item py-2" href="{{ route('teacher.index') }}"> Lista Instructores</a></li>
+                        <li><a class="dropdown-item py-2" href="{{ route('course.index') }}"> Lista Cursos</a></li>
+                        <li><a class="dropdown-item py-2" href="{{ route('apprentice.index') }}"> Lista Aprendices</a></li>
+                        <li><a class="dropdown-item py-2" href="{{ route('programs.index') }}"> Lista Programas</a></li>
+                        <li><a class="dropdown-item py-2" href="{{ route('environments.index') }}"> Lista Ambientes</a></li>
+                        <li><a class="dropdown-item py-2" href="{{ route('announcements.index') }}"> Lista Anuncios</a></li>
+                        <li><a class="dropdown-item py-2" href="{{ route('offers.index') }}"> Lista Ofertas</a></li>
+                        <li><a class="dropdown-item py-2" href="{{ route('cohorts.index') }}"> Lista Ficha</a></li>
                     </ul>
                 </li>
             </ul>
