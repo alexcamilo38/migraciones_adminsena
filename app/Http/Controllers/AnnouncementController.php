@@ -20,7 +20,7 @@ class AnnouncementController extends Controller
     {
         $announcements = Announcement::all();
 
-        return view('announcements.index', compact('announcements'));
+        return response()->json($announcements);
     }
 
     public function dato(Request $request)
@@ -36,7 +36,7 @@ class AnnouncementController extends Controller
             $announcements->save();
         
 
-        return redirect()->route('announcements.index');
+        return response()->json($announcements);
     
     }
 
@@ -44,14 +44,14 @@ class AnnouncementController extends Controller
     {
        $announcements = Announcement::find($id);
 
-        return view('announcements.show', compact('announcements'));
+        return response()->json($announcements);
     }
 
     public function edit(Announcement $announcements)
     {
         $training_centers = Training_center::all();
 
-        return view('announcements.edit', compact('announcements', 'training_centers'));
+        return response()->json(compact('announcements', 'training_centers'));
     }
     
 
@@ -59,13 +59,13 @@ class AnnouncementController extends Controller
     {
         $announcements->update($request->all());
 
-        return redirect()->route('announcements.index');
+        return response()->json($announcements);
     }
 
-    public function destroy(Announcement $environment)
+    public function destroy(Announcement $announcement)
     {
-        $environment->delete();
+        $announcement->delete();
 
-        return redirect()->route('announcements.index');
+        return response()->json($announcement);
     }
 }

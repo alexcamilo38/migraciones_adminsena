@@ -14,7 +14,7 @@ class OfferController extends Controller
 
         $offers=Offer::all();
 
-        return view('offers.index',compact('offers'));
+        return response()->json($offers);
 
 
     }
@@ -26,14 +26,14 @@ class OfferController extends Controller
     }
     
     public function dato(Request $request){
-         Offer::create($request->all());
-         return redirect()->route('offers.index');
+         $offers = Offer::create($request->all());
+         return response()->json($offers);
     }
     
     public function show ($id){
 
      $offers=Offer::find($id);
-       return view('offers.show',compact('offers'));
+       return response()->json($offers);
 
 
     }
@@ -43,7 +43,7 @@ class OfferController extends Controller
         $program = Program::all();
 
         //  Enviamos todo a la vista con compact
-        return view('offers.edit', compact('offers', 'program'));
+        return response()->json(compact('offers', 'program'));
     }
 
     public function update(Request $request, Offer $offers)
@@ -51,13 +51,13 @@ class OfferController extends Controller
     //metodo mas sencillo sin nesecidad de poner todo lo que pertenece a esa tabla
         $offers->update($request->all());
 
-        return redirect()->route('offers.index');
+        return response()->json($offers);
     }
     //Destroy se encuentra el registro para luego eliminarlo..
     public function destroy(Offer $offers)
     {
         $offers->delete();
-        return redirect()->route('offers.index');
+        return response()->json($offers);
     }
     
 }

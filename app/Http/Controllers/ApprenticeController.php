@@ -16,7 +16,7 @@ class ApprenticeController extends Controller
 
         $apprentices=Apprentice::all();
 
-        return view('apprentice.index',compact('apprentices'));
+        return response()->json($apprentices);
 
 
     }
@@ -29,14 +29,14 @@ class ApprenticeController extends Controller
     }
     
     public function dato(Request $request){
-         Apprentice::create($request->all());
-         return redirect()->route('apprentice.index');
+         $apprentices = Apprentice::create($request->all());
+         return response()->json($apprentices);
     }
     
     public function show ($id){
 
-     $apprentices=Apprentice::find($id);
-       return view('apprentice.show',compact('apprentices'));
+        $apprentices=Apprentice::find($id);
+        return response()->json($apprentices);
 
 
     }
@@ -47,7 +47,7 @@ class ApprenticeController extends Controller
         $computers = Computer::all();
 
         //  Enviamos todo a la vista con compact
-        return view('apprentice.edit', compact('apprentices', 'courses', 'computers'));
+        return response()->json(compact('apprentices', 'courses', 'computers'));
     }
 
     public function update(Request $request, Apprentice $apprentices)
@@ -55,13 +55,13 @@ class ApprenticeController extends Controller
     //metodo mas sencillo sin nesecidad de poner todo lo que pertenece a esa tabla
         $apprentices->update($request->all());
 
-        return redirect()->route('apprentice.index');
+        return response()->json($apprentices);
     }
     //Destroy se encuentra el registro para luego eliminarlo..
     public function destroy(Apprentice $apprentices)
     {
         $apprentices->delete();
-        return redirect()->route('apprentice.index');
+        return response()->json($apprentices);
     }
 
 

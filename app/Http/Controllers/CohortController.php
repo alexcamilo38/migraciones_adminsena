@@ -13,7 +13,7 @@ class CohortController extends Controller
 
         $cohorts=Cohort::all();
 
-        return view('cohorts.index',compact('cohorts'));
+        return response()->json($cohorts);
 
 
     }
@@ -25,14 +25,14 @@ class CohortController extends Controller
     }
     
     public function dato(Request $request){
-         Cohort::create($request->all());
-         return redirect()->route('cohorts.index');
+         $cohorts=Cohort::create($request->all());
+         return response()->json($cohorts);
     }
     
     public function show ($id){
 
      $cohorts=Cohort::find($id);
-       return view('cohorts.show',compact('cohorts'));
+      return response()->json($cohorts);
 
 
     }
@@ -42,7 +42,7 @@ class CohortController extends Controller
         $offer = Offer::all();
 
         //  Enviamos todo a la vista con compact
-        return view('cohorts.edit', compact('cohorts', 'offer'));
+        return response()->json(compact('cohorts', 'offer'));
     }
 
     public function update(Request $request, Cohort $cohorts)
@@ -50,13 +50,13 @@ class CohortController extends Controller
     //metodo mas sencillo sin nesecidad de poner todo lo que pertenece a esa tabla
         $cohorts->update($request->all());
 
-        return redirect()->route('cohorts.index');
+        return response()->json($cohorts);
     }
     //Destroy se encuentra el registro para luego eliminarlo..
     public function destroy(Cohort $cohorts)
     {
         $cohorts->delete();
-        return redirect()->route('cohorts.index');
+        return response()->json($cohorts);
     }
     
 

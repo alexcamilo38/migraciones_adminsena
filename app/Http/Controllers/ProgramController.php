@@ -23,7 +23,7 @@ class ProgramController extends Controller
     {
         $programs = Program::all();
 
-        return view('programs.index', compact('programs'));
+        return response()->json($programs);
     }
 
     public function dato(Request $request)
@@ -39,34 +39,34 @@ class ProgramController extends Controller
             $program->save();
         
 
-        return redirect()->route('programs.index');
+        return response()->json($program);
     }
 
     public function show($id)
     {
         $program = Program::find($id);
 
-        return view('programs.show', compact('program'));
+        return response()->json($program);
     }
 
     public function edit(Program $program)
     {
         $areas = Area::all();
 
-        return view('programs.edit', compact('program', 'areas'));
+        return response()->json(compact('program', 'areas'));
     }
 
     public function update(Request $request, Program $program)
     {
         $program->update($request->all());
 
-        return redirect()->route('programs.index');
+        return response()->json($program);
     }
 
     public function destroy(Program $program)
     {
         $program->delete();
 
-        return redirect()->route('programs.index');
+        return response()->json($program);
     }
 }

@@ -18,7 +18,7 @@ class CourseController extends Controller
 
         $courses = Course::all();
 
-        return view('course.index', compact('courses'));
+        return response()->json($courses);
     }
 
     public function registro()
@@ -32,15 +32,15 @@ class CourseController extends Controller
 
     public function dato(Request $request)
     {
-        Course::create($request->all());
-         return redirect()->route('course.index');
+        $courses =Course::create($request->all());
+        return response()->json($courses);
     }
 
     public function show($id)
     {
 
         $courses = Course::find($id);
-        return view('course.show', compact('courses'));
+        return response()->json($courses);
     }
     public function edit(Course $courses)
     {
@@ -50,7 +50,7 @@ class CourseController extends Controller
         $environments = Environment::all();
 
         //  Enviamos todo a la vista con compact
-        return view('course.edit', compact('courses', 'training_centers','cohorts','environments'));
+        return response()->json(compact('courses', 'training_centers','cohorts','environments'));
     }
 
     public function update(Request $request, Course $courses)
@@ -58,12 +58,12 @@ class CourseController extends Controller
         //metodo mas sencillo sin nesecidad de poner todo lo que pertenece a esa tabla
         $courses->update($request->all());
 
-        return redirect()->route('course.index');
+        return response()->json($courses);
     }
     //Destroy se encuentra el registro para luego eliminarlo..
     public function destroy(Course $courses)
     {
         $courses->delete();
-        return redirect()->route('course.index');
+        return response()->json($courses);
     }
 }

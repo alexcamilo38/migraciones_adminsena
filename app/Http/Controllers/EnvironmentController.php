@@ -20,7 +20,7 @@ class EnvironmentController extends Controller
     {
         $environments = Environment::all();
 
-        return view('environments.index', compact('environments'));
+       return response()->json($environments);
     }
 
     public function dato(Request $request)
@@ -36,7 +36,7 @@ class EnvironmentController extends Controller
             $environments->save();
         
 
-        return redirect()->route('environments.index');
+        return response()->json($environments);
     
     }
 
@@ -44,14 +44,14 @@ class EnvironmentController extends Controller
     {
        $environments = Environment::find($id);
 
-        return view('environments.show', compact('environments'));
+        return response()->json($environments);
     }
 
     public function edit(Environment $environments)
     {
         $training_centers = Training_center::all();
 
-        return view('environments.edit', compact('environments', 'training_centers'));
+        return response()->json(compact('environments', 'training_centers'));
     }
     
 
@@ -59,14 +59,14 @@ class EnvironmentController extends Controller
     {
         $environments->update($request->all());
 
-        return redirect()->route('environments.index');
+        return response()->json($environments);
     }
 
     public function destroy(Environment $environment)
     {
         $environment->delete();
 
-        return redirect()->route('environments.index');
+        return response()->json($environment);
     }
     
 }
