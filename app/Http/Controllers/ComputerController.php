@@ -14,7 +14,7 @@ class ComputerController extends Controller
 
         $computer=Computer::all();
 
-        return view('computer.index',compact('computer'));
+       return response()->json($computer);
 
 
     }
@@ -24,36 +24,36 @@ class ComputerController extends Controller
         return view('computer.computador',compact('environments'));
     }
     public function model(Request $request){
-         Computer::create($request->all());
-         return redirect()->route('computer.index');
+         $computer = Computer::create($request->all());
+         return response()->json($computer);
          
     }
 
     public function show ($id){
 
      $computer=Computer::find($id);
-       return view('computer.show',compact('computer'));
+       return response()->json($computer);
 
 
     }
      public function edit(Computer $computer)
     { //Encuentro el Curso
          $environments=Environment::all();
-        return view('computer.edit', compact('computer','environments'));
+        return response()->json($computer);
     }
 
      public function update(Request $request, Computer $computer){
         //metodo mas sencillo sin nesecidad de poner todo lo que pertenece a esa tabla
         $computer->update($request->all());
 
-        return redirect()->route('computer.index');
+        return response()->json($computer);
 
       }
       //Destroy se encuentra el registro para luego eliminarlo..
     public function destroy(Computer $computer)
     {
         $computer->delete();
-        return redirect()->route('computer.index');
+        return response()->json($computer);
     }
 
 }

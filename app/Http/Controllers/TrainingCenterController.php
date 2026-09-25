@@ -13,7 +13,8 @@ class TrainingCenterController extends Controller
 
         $Training_centers=Training_center::all();
 
-        return view('trainingcenters.index',compact('Training_centers'));
+       return response()->json($Training_centers);
+
 
 
     }
@@ -22,20 +23,22 @@ class TrainingCenterController extends Controller
     }
     
     public function dato(Request $request){
-        Training_center::create($request->all());
-        return redirect()->route('trainingcenters.index');
+        $Training_centers = Training_center::create($request->all());
+        return response()->json($Training_centers);
+
     }
     public function show ($id){
 
      $Training_centers=Training_center::find($id);
-       return view('trainingcenters.show',compact('Training_centers'));
+     return response()->json($Training_centers);
+
 
 
     }
     public function edit(Training_center $Training_centers)
     { //Encuentro el Curso
+       return response()->json($Training_centers);
 
-        return view('trainingcenters.edit', compact('Training_centers'));
     }
     public function update(Request $request, Training_center $Training_centers){
 
@@ -43,14 +46,16 @@ class TrainingCenterController extends Controller
        $Training_centers->location = $request->location;
         $Training_centers->save();
 
-        return redirect()->route('trainingcenters.index');
+        return response()->json($Training_centers);
+
 
       }
       //Destroy se encuentra el registro para luego eliminarlo..
     public function destroy(Training_center $Training_centers)
     {
         $Training_centers->delete();
-        return redirect()->route('trainingcenters.index');
+        return response()->json($Training_centers);
+
     }
 
 

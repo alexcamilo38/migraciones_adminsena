@@ -14,7 +14,7 @@ class AreaController extends Controller
 
         $areas=Area::all();
 
-        return view('areas.index',compact('areas'));
+        return response()->json($areas);
 
 
     }
@@ -22,11 +22,12 @@ class AreaController extends Controller
     public function create(){
         return view('areas.create');
     }
+    
     public function salida(Request $request){
        //si se le pone el  return Area::create($request->all()); muestra los datos escritos
-        Area::create($request->all());
-        return redirect()->route('areas.index');
-
+        $areas = Area::create($request->all());
+        return response()->json($areas);
+        
     }
 
 
@@ -34,8 +35,8 @@ class AreaController extends Controller
     public function show ($id){
 
      $areas=Area::find($id);
-       return view('areas.show',compact('areas'));
-
+    return response()->json($areas);
+    
 
     }
 
@@ -43,7 +44,7 @@ class AreaController extends Controller
     public function edit(Area $areas)
     { //Encuentro el Curso
 
-        return view('areas.edit', compact('areas'));
+        return response()->json($areas);
     }
 
      public function update(Request $request, Area $areas){
@@ -52,13 +53,13 @@ class AreaController extends Controller
       
         $areas->save();
 
-        return redirect()->route('areas.index');
+        return response()->json($areas);
 
       }
       //Destroy se encuentra el registro para luego eliminarlo..
     public function destroy(Area $areas)
     {
         $areas->delete();
-        return redirect()->route('areas.index');
+        return response()->json($areas);
     }
 }
