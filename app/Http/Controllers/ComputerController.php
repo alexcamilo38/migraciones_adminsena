@@ -39,7 +39,7 @@ class ComputerController extends Controller
      public function edit(Computer $computer)
     { //Encuentro el Curso
          $environments=Environment::all();
-        return response()->json($computer);
+        return response()->json(compact('computer','environments'));
     }
 
      public function update(Request $request, Computer $computer){
