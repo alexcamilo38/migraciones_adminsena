@@ -19,10 +19,7 @@ class ComputerController extends Controller
 
     }
 
-    public function marca(){
-        $environments=Environment::all();
-        return view('computer.computador',compact('environments'));
-    }
+   
     public function model(Request $request){
          $computer = Computer::create($request->all());
          return response()->json($computer);

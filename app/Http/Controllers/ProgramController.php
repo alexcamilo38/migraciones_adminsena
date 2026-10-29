@@ -10,14 +10,6 @@ class ProgramController extends Controller
 {
     
     //
-    public function registro()
-    {
-
-        $areas = Area::all();
-        $programs = Program::all();
-
-        return view('programs.create', compact('areas', 'programs'));
-    }
 
     public function index()
     {

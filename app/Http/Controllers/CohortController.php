@@ -18,11 +18,6 @@ class CohortController extends Controller
 
     }
 
-    public function registro(){
-    //llamamos a todos sin necesidad de escribir uno por uno
-     $offer=Offer::all();
-        return view('cohorts.create',compact('offer'));
-    }
     
     public function dato(Request $request){
          $cohorts=Cohort::create($request->all());

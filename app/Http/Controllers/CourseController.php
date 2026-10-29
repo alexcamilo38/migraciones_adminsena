@@ -21,14 +21,6 @@ class CourseController extends Controller
         return response()->json($courses);
     }
 
-    public function registro()
-    {
-        
-        $training_centers = Training_center::all();
-        $cohorts = Cohort::all();
-        $environments = Environment::all();
-        return view('course.registro', compact('training_centers','cohorts','environments'));
-    }
 
     public function dato(Request $request)
     {

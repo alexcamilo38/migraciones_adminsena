@@ -19,11 +19,6 @@ class OfferController extends Controller
 
     }
 
-    public function registro(){
-    //llamamos a todos sin necesidad de escribir uno por uno
-     $programs=Program::all();
-        return view('offers.create',compact('programs'));
-    }
     
     public function dato(Request $request){
          $offers = Offer::create($request->all());

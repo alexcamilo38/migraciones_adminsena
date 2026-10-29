@@ -9,12 +9,6 @@ use Illuminate\Http\Request;
 class AnnouncementController extends Controller
 {
     //
-    public function registro()
-    {
-        $training_centers = Training_center::all();
-        
-        return view('announcements.create', compact('training_centers'));
-    }
 
     public function index()
     {

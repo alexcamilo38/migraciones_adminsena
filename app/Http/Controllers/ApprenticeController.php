@@ -21,12 +21,6 @@ class ApprenticeController extends Controller
 
     }
 
-    public function registro(){
-    //llamamos a todos sin necesidad de escribir uno por uno
-     $courses=Course::all();
-     $computers=Computer::all();
-        return view('apprentice.registro',compact('courses','computers'));
-    }
     
     public function dato(Request $request){
          $apprentices = Apprentice::create($request->all());
