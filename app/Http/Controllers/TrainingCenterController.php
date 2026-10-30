@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Training_center;
 use Illuminate\Http\Request;
+use Cloudinary\Cloudinary;
 
 class TrainingCenterController extends Controller
 {
@@ -18,13 +19,53 @@ class TrainingCenterController extends Controller
 
 
     }
-    public function registro(){
-        return view('trainingcenters.registrar');
-    }
     
     public function dato(Request $request){
-        $Training_centers = Training_center::create($request->all());
-        return response()->json($Training_centers);
+
+       // $Training_centers = Training_center::create($request->all());
+        //return response()->json($Training_centers);
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'location' => 'required|string|max:255',
+            'imagen' => 'required|image|mimes:jpg,jpeg,png,webp|max:5120',
+        ]);
+
+        // Obtener imagen
+        $file = $request->file('imagen');
+
+        // Configurar Cloudinary
+        $cloudinary = new Cloudinary([
+            'cloud' => [
+                'cloud_name' => config('services.cloudinary.cloud_name'),
+                'api_key' => config('services.cloudinary.api_key'),
+                'api_secret' => config('services.cloudinary.api_secret'),
+            ],
+            'url' => [
+                'secure' => true,
+            ],
+        ]);
+
+        // Subir imagen a Cloudinary
+        $resultado = $cloudinary->uploadApi()->upload(
+            $file->getRealPath(),
+            [
+                'folder' => 'training_centers',
+                'resource_type' => 'image',
+            ]
+        );
+
+        // Crear centro 
+        $Training_centers = Training_center::create([
+            'name' => $request->name,
+            'location' => $request->location,
+            'imagen_url' => $resultado['secure_url'],
+            'imagen_public_id' => $resultado['public_id'],
+        ]);
+
+        return response()->json([
+            'message' => 'Centro de formacion creado correctamente',
+            'data' => $Training_centers,
+        ], 201);
 
     }
     public function show ($id){
